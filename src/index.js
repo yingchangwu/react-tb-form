@@ -1,6 +1,6 @@
 export {BlockIcon} from './Icons'
 export {BlockItem} from './BlockItem'
-export {BlockTypes} from './BlockTypesEnum'
+export {BlockTypes,BlockTypesList} from './BlockTypesEnum'
 export {
     ShortTextBlock,
     MultipleChoiceBlock,
