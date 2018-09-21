@@ -24,7 +24,15 @@
   "peerDependencies": {
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "uuid": "^3.2.1",
+    "semantic-ui-react": "^0.82.5",
+    "moment":"^2.22.2",
+    "react-widgets-moment":"^4.0.21",
+    "react-widgets":"^4.4.5",
+    "react-dropzone":"^5.1.0",
+    "react-places-autocomplete": "^7.2.0",
+    "react-dependent-script":"^1.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -52,7 +60,16 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^1.6.2",
-    "rollup-plugin-url": "^1.4.0"
+    "rollup-plugin-url": "^1.4.0",
+    "rollup-plugin-multi-entry": "^2.0.2",
+    "uuid": "^3.2.1",
+    "semantic-ui-react": "^0.82.5",
+    "moment":"^2.22.2",
+    "react-widgets-moment":"^4.0.21",
+    "react-widgets":"^4.4.5",
+    "react-dropzone":"^5.1.0",
+    "react-places-autocomplete": "^7.2.0",
+    "react-dependent-script":"^1.1.0"
   },
   "files": [
     "dist"
