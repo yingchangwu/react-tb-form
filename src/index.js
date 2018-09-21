@@ -1,4 +1,4 @@
-export { default as Foo } from './Foo'
+export {BlockIcon} from './Icons'
 export {BlockItem} from './BlockItem'
 export {BlockTypes} from './BlockTypesEnum'
 export {
@@ -13,19 +13,19 @@ export {
     StatementBlock,
     SchedulerBlock,
     AddressLookupBlock} from './Blocks'
-    export {
-        BuildQuestionEditModel,
-        BuildNewQuestionEditModel,
-        MapQuestionEditModel,
-        MultipleChoiceEditModel,
-        ChoiceOptionItem,
-        ShortTextEditModel,
-        YesNoEditModel,
-        RatingEditModel,
-        LongTextEditModel,
-        FileUploadEditModel,
-        DropdownListEditModel,
-        DateTimePickerEditModel,
-        StatementEditModel,
-        SchedulerEditModel,
-        AddressLookupEditModel} from './Models'
+export {
+    BuildQuestionEditModel,
+    BuildNewQuestionEditModel,
+    MapQuestionEditModel,
+    MultipleChoiceEditModel,
+    ChoiceOptionItem,
+    ShortTextEditModel,
+    YesNoEditModel,
+    RatingEditModel,
+    LongTextEditModel,
+    FileUploadEditModel,
+    DropdownListEditModel,
+    DateTimePickerEditModel,
+    StatementEditModel,
+    SchedulerEditModel,
+    AddressLookupEditModel} from './Models'
