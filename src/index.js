@@ -12,6 +12,7 @@ export {
     FileUploadEditor,
     StatementEditor,
     SchedulerEditor,
+    NewDefaultEditor,
     AddressLookupEditor} from './Editor'
 export {
     BuildQuestionEditModel,

@@ -46,16 +46,14 @@ export class RenderDropzoneField extends React.Component{
         }));
         this.setState(prevState=>({uploadedFiles:  [...prevState.uploadedFiles, ...mappedFiles]}));
         //this.props.input.onChange(files);
-        this.props.handleFileUpload(files);
-        //this.handleFileUpload(files);
+        this.handleFileUpload(files);
       }
     }
   } 
-/*
-  handleFileUpload = (files) =>{
-    const url = 'http://localhost:56279/api/FileService/UploadFile';
-     
 
+  handleFileUpload = (files) =>{
+    const url = this.props.uploadEndpointUrl;
+     
      files.forEach(file=>{
       const formData = new FormData();
       formData.append('file',file);
@@ -81,7 +79,7 @@ export class RenderDropzoneField extends React.Component{
 
   deleteFile = (e) =>{
     e.preventDefault();
-    const url = 'http://localhost:56279/api/FileService/DeleteFile';
+    const url = this.props.deleteEndpointUrl;
     const fileName = e.target.dataset.filename;
     request.get(url)
       .query({fileName: fileName})
@@ -96,7 +94,7 @@ export class RenderDropzoneField extends React.Component{
       });
   }
 
-*/
+
 
   renderImageList = (files) =>{
     console.log('rendering images' + files);
