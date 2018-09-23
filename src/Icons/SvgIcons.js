@@ -1,10 +1,9 @@
 import React from 'react'
+import ShortTextSvg from './short-text.svg'
+import LongTextSvg from './long-text.svg'
+
 export const ShortText = () => {
-    return <svg  className="SVGInline-svg" width="16" height="6" xmlns="http://www.w3.org/2000/svg">
-    <g fillRule="evenodd">
-        <path d="M0 0h10v2H0zM12 0h4v2h-4zM0 4h16v2H0z" />
-    </g>
-</svg>
+    return <ShortTextSvg />;
 }
 
 export const YesNo = () => {
@@ -18,8 +17,7 @@ export const MultipleChoice = () => {
     <path d="M1.707 4.293L.293 5.707 5 10.414l8.707-8.707L12.293.293 5 7.586z" fillRule="nonzero" /></svg>
 }
 export const LongText = () => {
-    return <svg className="SVGInline-svg" width="16" height="10" xmlns="http://www.w3.org/2000/svg">
-    <g fillRule="evenodd"><path d="M0 0h10v2H0zM12 0h4v2h-4zM0 4h16v2H0zM6 8h10v2H6zM0 8h4v2H0z" /></g></svg>
+    return <LongTextSvg />
 }
 
 export const Rating = () => {
