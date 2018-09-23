@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
+import { ChoiceOptionItemField } from './Fields/ChoiceOptionItemField'
 import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../Icons'
+import { BlockIcon } from '../BlockIcon'
 import { ContentEditor } from './Fields/ContentEditor'
 
-export default class DateTimePickerBlock extends Component{
+export default class DropdownListEditor extends Component{
 
     constructor(props){
         super(props);
@@ -12,7 +13,7 @@ export default class DateTimePickerBlock extends Component{
         };
         this.edit = this.edit.bind(this);
         this.handleSave = this.handleSave.bind(this);
-        this.showBlockInfo = this.showBlockInfo.bind(this);
+        this.showProperties = this.showProperties.bind(this);
     }
     componentWillReceiveProps(nextProps){
         if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
@@ -27,7 +28,7 @@ export default class DateTimePickerBlock extends Component{
     edit(editing){
         this.setState({editing: editing});
     }
-    showBlockInfo(){
+    showProperties(){
         this.props.focus(this.props.question);
     }
     render(){
@@ -36,7 +37,7 @@ export default class DateTimePickerBlock extends Component{
 
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
-        return <div className={editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showBlockInfo}>
+        return (<div className={editing ? questionTypeEditingStyle : "editor-block-container"} onClick={this.showProperties}>
                     <div className="editor-block-icon-wrapper">
                         <BlockIcon type={question.type} order={question.order} />
                     </div>
@@ -48,6 +49,14 @@ export default class DateTimePickerBlock extends Component{
                             onSave={this.handleSave}
                             edit={this.edit} />
                     </div>
+                    <div className="editor-block-choices">
+                        <ChoiceOptionItemField
+                            question = {question}
+                            addUpdateChoice = {this.props.addUpdateChoice}
+                            isActive={isActive} />
+                    </div>
                 </div>
+        );
+
     }
 }

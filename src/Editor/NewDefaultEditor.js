@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 
 import {ShortTextEditModel} from '../Models'
-import { BlockIcon } from '../Icons'
+import { BlockIcon } from '../BlockIcon'
 import {BlockTypes} from '../BlockTypesEnum'
 import { ContentEditor } from './Fields/ContentEditor'
 
-export default class NewDefaultBlock extends Component{
+export default class NewDefaultEditor extends Component{
 
     constructor(props){
         super(props);

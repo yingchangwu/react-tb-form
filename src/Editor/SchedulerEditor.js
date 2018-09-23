@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../Icons'
-import {BlockTypes} from '../BlockTypesEnum'
+import { BlockIcon } from '../BlockIcon'
 import { ContentEditor } from './Fields/ContentEditor'
-
-export default class ShortTextBlock extends Component{
+export default class SchedulerEditor extends Component{
 
     constructor(props){
         super(props);
@@ -16,27 +14,17 @@ export default class ShortTextBlock extends Component{
         this.handleSave = this.handleSave.bind(this);
     }
     componentWillReceiveProps(nextProps){
-        if(nextProps.question.type != this.props.question.type){
-            //update question type item
-            
-            if(nextProps.question.type == BlockTypes.ShortText){
-                this.setState({selectedIndex: 0});
-            }
-            if(nextProps.question.type == BlockTypes.MultipleChoice){
-                this.setState({selectedIndex: 1});
-            }
-        }
         if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
             this.props.focus(nextProps.question);
         }
+    }
+    edit(editing){
+        this.setState({editing: editing});
     }
     handleSave(text){
         const question = BuildQuestionEditModel(this.props.question);
         question.text = text;
         this.props.save(question);
-    }
-    edit(editing){
-        this.setState({editing: editing});
     }
     showProperties(){
         this.props.focus(this.props.question);
@@ -44,10 +32,11 @@ export default class ShortTextBlock extends Component{
     render(){
     
         const {question, isActive} = this.props;
+
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
         return (
-            <div className= {editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showProperties}>
+            <div className={editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showProperties}>
                 <div className="editor-block-icon-wrapper">
                     <BlockIcon type={question.type} order={question.order} />
                 </div>

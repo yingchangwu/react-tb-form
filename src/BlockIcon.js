@@ -1,6 +1,6 @@
 import React from "react";
-import{ ShortText,LongText,YesNo,MultipleChoice,Rating,DropdownList,FileUpload,DateTimePicker,Statement,Scheduler} from './SvgIcons'
-import {BlockTypes} from '../BlockTypesEnum'
+import{ ShortText,LongText,YesNo,MultipleChoice,Rating,DropdownList,FileUpload,DatePicker,Statement,Scheduler} from 'react-tb-icons'
+import {BlockTypes} from './BlockTypesEnum'
 const styles={
   blockSvgOrderedIcon:{
     width:'52px',
@@ -87,7 +87,7 @@ export class BlockIcon extends React.PureComponent {
       case BlockTypes.Rating:
         return <Rating />
       case BlockTypes.DateTimePicker:
-        return <DateTimePicker />
+        return <DatePicker />
       case BlockTypes.Statement:
         return <Statement />
         case BlockTypes.Scheduler:
@@ -111,7 +111,7 @@ export class BlockIcon extends React.PureComponent {
           return {...styles.blockSvgOrderedIcon, ...styles.rating}
         case BlockTypes.DropdownList:
           return {...styles.blockSvgOrderedIcon, ...styles.dropdownList}
-        case BlockTypes.DateTimePicker:
+        case BlockTypes.DatePicker:
           return {...styles.blockSvgOrderedIcon, ...styles.datetimePicker}
         case BlockTypes.FileUpload:
           return {...styles.blockSvgOrderedIcon, ...styles.fileUpload}

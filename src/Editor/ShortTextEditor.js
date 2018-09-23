@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../Icons'
+import { BlockIcon } from '../BlockIcon'
+import {BlockTypes} from '../BlockTypesEnum'
 import { ContentEditor } from './Fields/ContentEditor'
 
-export default class AddressLookupBlock extends Component{
+export default class ShortTextEditor extends Component{
 
     constructor(props){
         super(props);
@@ -15,6 +16,16 @@ export default class AddressLookupBlock extends Component{
         this.handleSave = this.handleSave.bind(this);
     }
     componentWillReceiveProps(nextProps){
+        if(nextProps.question.type != this.props.question.type){
+            //update question type item
+            
+            if(nextProps.question.type == BlockTypes.ShortText){
+                this.setState({selectedIndex: 0});
+            }
+            if(nextProps.question.type == BlockTypes.MultipleChoice){
+                this.setState({selectedIndex: 1});
+            }
+        }
         if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
             this.props.focus(nextProps.question);
         }

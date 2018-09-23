@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../Icons'
+import { BlockIcon } from '../BlockIcon'
 import { ContentEditor } from './Fields/ContentEditor'
-
-export default class LongTextBlock extends Component{
+export default class RatingEditor extends Component{
 
     constructor(props){
         super(props);
@@ -36,18 +35,18 @@ export default class LongTextBlock extends Component{
 
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
-        return  <div className={editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showBlockInfo}>
-                    <div className="editor-block-icon-wrapper">
-                        <BlockIcon type={question.type} order={question.order} />
+        return       <div className={editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showBlockInfo}>
+                        <div className="editor-block-icon-wrapper">
+                            <BlockIcon type={question.type} order={question.order} />
+                        </div>
+                        <div className="editor-block-content">
+                            <ContentEditor 
+                                id={question.id}
+                                className="BlockQuestionInput"
+                                value={question.text}
+                                onSave={this.handleSave}
+                                edit={this.edit} />
+                        </div>
                     </div>
-                    <div className="editor-block-content">
-                        <ContentEditor 
-                            id={question.id}
-                            className="BlockQuestionInput"
-                            value={question.text}
-                            onSave={this.handleSave}
-                            edit={this.edit} />
-                    </div>
-                </div>
-        }
+    }
 }

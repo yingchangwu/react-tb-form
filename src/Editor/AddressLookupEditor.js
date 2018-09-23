@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../Icons'
+import { BlockIcon } from '../BlockIcon'
 import { ContentEditor } from './Fields/ContentEditor'
-export default class SchedulerBlock extends Component{
+
+export default class AddressLookupEditor extends Component{
 
     constructor(props){
         super(props);
@@ -18,13 +19,13 @@ export default class SchedulerBlock extends Component{
             this.props.focus(nextProps.question);
         }
     }
-    edit(editing){
-        this.setState({editing: editing});
-    }
     handleSave(text){
         const question = BuildQuestionEditModel(this.props.question);
         question.text = text;
         this.props.save(question);
+    }
+    edit(editing){
+        this.setState({editing: editing});
     }
     showProperties(){
         this.props.focus(this.props.question);
@@ -32,11 +33,10 @@ export default class SchedulerBlock extends Component{
     render(){
     
         const {question, isActive} = this.props;
-
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
         return (
-            <div className={editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showProperties}>
+            <div className= {editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showProperties}>
                 <div className="editor-block-icon-wrapper">
                     <BlockIcon type={question.type} order={question.order} />
                 </div>

@@ -1,18 +1,18 @@
-export {BlockIcon} from './Icons'
+export {BlockIcon} from './BlockIcon'
 export {BlockItem} from './BlockItem'
 export {BlockTypes,BlockTypesList} from './BlockTypesEnum'
 export {
-    ShortTextBlock,
-    MultipleChoiceBlock,
-    LongTextBlock,
-    YesNoBlock ,
-    RatingBlock,
-    DropdownListBlock,
-    DateTimePickerBlock,
-    FileUploadBlock,
-    StatementBlock,
-    SchedulerBlock,
-    AddressLookupBlock} from './Blocks'
+    ShortTextEditor,
+    MultipleChoiceEditor,
+    LongTextEditor,
+    YesNoEditor ,
+    RatingEditor,
+    DropdownListEditor,
+    DateTimePickerEditor,
+    FileUploadEditor,
+    StatementEditor,
+    SchedulerEditor,
+    AddressLookupEditor} from './Editor'
 export {
     BuildQuestionEditModel,
     BuildNewQuestionEditModel,

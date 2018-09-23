@@ -12,7 +12,7 @@ const searchOptions = {
   types:['address']
 };
 
-export class RenderAutoCompleteAddress extends React.Component{
+export class RenderAutoCompleteAddressField extends React.Component{
     constructor(props){
         super(props);
         this.state = {

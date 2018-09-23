@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../Icons'
+import { BlockIcon } from '../BlockIcon'
 import { ContentEditor } from './Fields/ContentEditor'
-export default class YesNoBlock extends Component{
+export default class YesNoEditor extends Component{
 
     constructor(props){
         super(props);

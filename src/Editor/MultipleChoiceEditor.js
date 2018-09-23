@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import { ChoiceOptionItemField } from './Fields/ChoiceOptionItemField'
+import { BlockIcon } from '../BlockIcon'
 import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../Icons'
 import { ContentEditor } from './Fields/ContentEditor'
 
-export default class DropdownListBlock extends Component{
+export default class MultipleChoiceEditor extends Component{
 
     constructor(props){
         super(props);
@@ -16,6 +16,7 @@ export default class DropdownListBlock extends Component{
         this.showProperties = this.showProperties.bind(this);
     }
     componentWillReceiveProps(nextProps){
+
         if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
             this.props.focus(nextProps.question);
         }

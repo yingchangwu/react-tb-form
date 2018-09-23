@@ -1,12 +1,13 @@
 import React from 'react'
 import Dropzone from 'react-dropzone'
 import {Table, Image, Button} from 'semantic-ui-react'
+import {ImgUploadCloud} from 'react-tb-icons'
 
 const fileMaxSize = 1000000000
 const acceptedFileTypes = 'image/x-png,image/png,image/jpg,image/jpeg,image/gif'
 const acceptFileTypesArray = acceptedFileTypes.split(',').map((item)=>{return item.trim()})
 
-export class RenderDropzoneInput extends React.Component{
+export class RenderDropzoneField extends React.Component{
   constructor(props){
     super(props);
     this.state = {
@@ -152,9 +153,7 @@ export class RenderDropzoneInput extends React.Component{
         <div className="active-message">Drop files here</div>
                 {
            uploadedFiles.length > 0 ?  this.renderImageList(uploadedFiles) :  <div className="dropzone-message">
-          <svg width="132px" height="85px" viewBox="0 0 132 85">
-            <path d="M79,66 L90.0059907,66 C92.2100423,66 92.9101127,64.5747628 91.5656686,62.8166435 L70.4343314,35.1833565 C69.0840859,33.4176507 66.9101127,33.4252372 65.5656686,35.1833565 L44.4343314,62.8166435 C43.0840859,64.5823493 43.7881789,66 45.9940093,66 L57,66 L57,85 L79,85 L79,66 Z M21,29.5 C21,20.9395864 27.9395864,14 36.5,14 C42.0635264,14 46.942436,16.9311929 49.6766493,21.333499 C53.9053637,8.92508495 65.6603992,0 79.5,0 C96.8969696,0 111,14.1030304 111,31.5 C111,32.4685402 110.956288,33.426871 110.870729,34.373127 C122.871557,36.445984 132,46.906961 132,59.5 C132,73.4162144 120.852491,84.7287886 107,84.9951959 L26,85 C25.8337182,84.9983938 25.6670467,85 25.5,85 C11.4167389,85 0,73.5832611 0,59.5 C0,46.6910327 9.44417086,36.0878698 21.7490942,34.2739295 C21.2627606,32.7701159 21,31.1657435 21,29.5 Z" fillRule="evenodd" stroke="#0000000" />
-          </svg>
+          <ImgUploadCloud />
           <div className="dropzone-note">Max file size: 10MB</div>
         </div>
         }
