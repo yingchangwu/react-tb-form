@@ -29,3 +29,8 @@ class Example extends Component {
 ## License
 
 MIT © [yingchangwu](https://github.com/yingchangwu)
+
+
+## References
+
+Plan-Text Placeholder https://gist.github.com/Schniz/e398a630c81cfd8a3d1e
