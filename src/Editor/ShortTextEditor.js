@@ -3,10 +3,14 @@ import { BuildQuestionEditModel } from '../Models'
 import { BlockIcon } from '../BlockIcon'
 import {BlockTypes} from '../BlockTypesEnum'
 import { ContentEditor } from './Fields/ContentEditor'
-
+import {PropTypes} from 'prop-types'
 
 export default class ShortTextEditor extends Component{
-
+    static propTypes = {
+        question: PropTypes.object,
+        save: PropTypes.func,
+        focus: PropTypes.func
+    };
     constructor(props){
         super(props);
         this.state = {
@@ -34,13 +38,17 @@ export default class ShortTextEditor extends Component{
     handleSave(text){
         const question = BuildQuestionEditModel(this.props.question);
         question.text = text;
-        this.props.save(question);
+        if(this.props.save){
+            this.props.save(question);
+        }
     }
     edit(editing){
         this.setState({editing: editing});
     }
     showProperties(){
-        this.props.focus(this.props.question);
+        if(this.props.focus){
+            this.props.focus(this.props.question);
+        }
     }
     render(){
         const defaultValue = "enter your short answer question ..."

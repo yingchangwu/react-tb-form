@@ -77,19 +77,15 @@ export class ContentEditor extends React.Component{
             break;
         }
     };
-    getClassName() {
-        var placeholder = this.props.value === "" ? "comPlainTextContentEditable--has-placeholder" : "";
-        var editing = this.state.editing ? "editing" : "";
-        return `comPlainTextContentEditable ${placeholder} ${editing} ${this.props.className}`;
-      }
+
+
     render() {
         const { className, onSave, edit, restProps } = this.props;
-
         const { editing } = this.state;
-
+        var editingStyle = editing ? "editing" : "";
         return (
           <div suppressContentEditableWarning="true"
-            className={this.getClassName()}
+            className={`plainTextContentEditable  ${editingStyle} parentClassName`}
             onClick={this.edit}
             contentEditable={editing}
             ref={(domNode) => {

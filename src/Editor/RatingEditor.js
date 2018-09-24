@@ -24,10 +24,14 @@ export default class RatingEditor extends Component{
     handleSave(text){
         const question = BuildQuestionEditModel(this.props.question);
         question.text = text;
-        this.props.save(question);
+        if(this.props.save){
+            this.props.save(question);
+        }
     }
     showBlockInfo(){
-        this.props.focus(this.props.question);
+        if(this.props.focus){
+            this.props.focus(this.props.question);
+        }
     }
     render(){
     

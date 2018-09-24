@@ -18,7 +18,6 @@ export const BlockItem = ({
                             question, 
                             isActive,
                             save,
-                            total,
                             focus,
                             edit,
                             addUpdateChoice}) =>{
