@@ -40,6 +40,7 @@ export default class NewDefaultEditor extends Component{
     render(){
         const {fieldId} = this.props;
         const order = this.props.total + 1;
+        const defaultValue = "enter your question ..."
         
         return      <div className="editor-block-container"  onClick={this.showProperties}>
                         <div className="editor-block-icon-wrapper">
@@ -48,7 +49,8 @@ export default class NewDefaultEditor extends Component{
                         <div className="editor-block-content">
                             <ContentEditor 
                                 id={fieldId}
-                                className="BlockQuestionInput"
+                                placeholder= {defaultValue}
+                                className="block-question-input"
                                 value=""
                                 onSave={this.handleSave} />
                         </div>

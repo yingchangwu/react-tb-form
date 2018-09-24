@@ -31,6 +31,7 @@ export default class YesNoEditor extends Component{
     }
     render(){
     
+        const defaultValue = "enter your yes/no question ..."
         const {question} = this.props;
 
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
@@ -43,7 +44,8 @@ export default class YesNoEditor extends Component{
                 <div className="editor-block-content">
                     <ContentEditor 
                         id={question.id}
-                        className="BlockQuestionInput"
+                        placeholder= {defaultValue}
+                        className="block-question-input"
                         value={question.text}
                         onSave={this.handleSave} 
                         edit={this.edit}/>

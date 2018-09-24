@@ -34,6 +34,7 @@ export default class DateTimePickerEditor extends Component{
     
         const {question} = this.props;
 
+        const defaultValue = "enter your date time question ..."
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
         return <div className={editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showBlockInfo}>
@@ -43,7 +44,8 @@ export default class DateTimePickerEditor extends Component{
                     <div className="editor-block-content">
                         <ContentEditor 
                             id={question.id}
-                            className="BlockQuestionInput"
+                            placeholder= {defaultValue}
+                            className="block-question-input"
                             value={question.text}
                             onSave={this.handleSave}
                             edit={this.edit} />
