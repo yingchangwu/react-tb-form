@@ -34,7 +34,7 @@ export default class MultipleChoiceEditor extends Component{
     }
     render(){
     
-        const {question, isActive} = this.props;
+        const {question} = this.props;
 
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
@@ -53,8 +53,7 @@ export default class MultipleChoiceEditor extends Component{
                     <div className="editor-block-choices">
                         <ChoiceOptionItemField
                             question = {question}
-                            addUpdateChoice = {this.props.addUpdateChoice}
-                            isActive={isActive} />
+                            addUpdateChoice = {this.props.addUpdateChoice} />
                     </div>
                 </div>
         );

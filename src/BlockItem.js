@@ -15,36 +15,30 @@ import {
 
   
 export const BlockItem = ({
-                                        question, 
-                                        isActive,
-                                        save,
-                                        total,
-                                        focus,
-                                        edit,
-                                        addUpdateChoice}) =>{
+                            question, 
+                            isActive,
+                            save,
+                            total,
+                            focus,
+                            edit,
+                            addUpdateChoice}) =>{
         let result = <div>INCORRECT QUESTION TYPE</div>;
         switch(question.type){
             case BlockTypes.ShortText:
                 result = <ShortTextEditor question={question} 
-                                        isActive={isActive}
                                         save={save}
-                                        total={total}
                                         focus={focus}
                                         edit={edit} />
             break;
             case BlockTypes.LongText:
                 result = <LongTextEditor question={question} 
-                                        isActive={isActive}
                                         save={save}
-                                        total={total}
                                         focus={focus}
                                         edit={edit} />
                 break;
             case BlockTypes.YesNo:
                 result = <YesNoEditor question={question} 
-                                        isActive={isActive}
                                         save={save}
-                                        total={total}
                                         focus={focus}
                                         edit={edit}
                                         addUpdateChoice={addUpdateChoice} />
@@ -53,16 +47,13 @@ export const BlockItem = ({
             result = <MultipleChoiceEditor question={question} 
                                     isActive={isActive}
                                     save={save}
-                                    total={total}
                                     focus={focus}
                                     edit={edit}
                                     addUpdateChoice={addUpdateChoice} />
             break;
             case BlockTypes.Rating:
             result = <RatingEditor question={question} 
-                                    isActive={isActive}
                                     save={save}
-                                    total={total}
                                     focus={focus}
                                     edit={edit} />
             break;
@@ -70,48 +61,37 @@ export const BlockItem = ({
             result = <DropdownListEditor question={question} 
                                     isActive={isActive}
                                     save={save}
-                                    total={total}
                                     focus={focus}
                                     edit={edit}
                                     addUpdateChoice={addUpdateChoice} />
             break;
             case BlockTypes.DateTimePicker:
             result = <DateTimePickerEditor question={question} 
-                                    isActive={isActive}
                                     save={save}
-                                    total={total}
                                     focus={focus}
                                     edit={edit} />
             break;
             case BlockTypes.FileUpload:
             result = <FileUploadEditor question={question} 
-                                    isActive={isActive}
                                     save={save}
-                                    total={total}
                                     focus={focus}
                                     edit={edit} />
             break;
             case BlockTypes.Statement:
             result = <StatementEditor question={question} 
-                                    isActive={isActive}
                                     save={save}
-                                    total={total}
                                     focus={focus}
                                     edit={edit} />
             break;
             case BlockTypes.Scheduler:
             result = <SchedulerEditor question={question} 
-                                    isActive={isActive}
                                     save={save}
-                                    total={total}
                                     focus={focus}
                                     edit={edit} />
             break;
             case BlockTypes.AddressLookup:
             result = <AddressLookupEditor question={question} 
-                                    isActive={isActive}
                                     save={save}
-                                    total={total}
                                     focus={focus}
                                     edit={edit} />
             break;

@@ -31,7 +31,7 @@ export default class RatingEditor extends Component{
     }
     render(){
     
-        const {question, isActive} = this.props;
+        const {question} = this.props;
 
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
