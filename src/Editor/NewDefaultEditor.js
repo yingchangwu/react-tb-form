@@ -26,7 +26,9 @@ export default class NewDefaultEditor extends Component{
             const id = this.props.fieldId;
             const order = this.props.total + 1;
             const question = new ShortTextEditModel(text,id,order);
-            this.props.save(question);
+            if(this.props.save){
+                this.props.save(question);
+            }
         }
     }
     showProperties(){
