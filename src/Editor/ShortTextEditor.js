@@ -3,10 +3,14 @@ import { BuildQuestionEditModel } from '../Models'
 import { BlockIcon } from '../BlockIcon'
 import {BlockTypes} from '../BlockTypesEnum'
 import { ContentEditor } from './Fields/ContentEditor'
-
+import {PropTypes} from 'prop-types'
 
 export default class ShortTextEditor extends Component{
-
+    static propTypes = {
+        question: PropTypes.object,
+        save: PropTypes.func,
+        focus: PropTypes.func
+    };
     constructor(props){
         super(props);
         this.state = {
