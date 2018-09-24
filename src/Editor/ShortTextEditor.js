@@ -4,6 +4,7 @@ import { BlockIcon } from '../BlockIcon'
 import {BlockTypes} from '../BlockTypesEnum'
 import { ContentEditor } from './Fields/ContentEditor'
 
+
 export default class ShortTextEditor extends Component{
 
     constructor(props){
@@ -42,7 +43,7 @@ export default class ShortTextEditor extends Component{
         this.props.focus(this.props.question);
     }
     render(){
-    
+        const defaultValue = "enter your short answer question ..."
         const {question} = this.props;
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
@@ -54,8 +55,9 @@ export default class ShortTextEditor extends Component{
                 <div className="editor-block-content">
                     <ContentEditor 
                         id={question.id}
-                        className="BlockQuestionInput"
-                        value={question.text}
+                        placeholder= {defaultValue}
+                        className="block-question-input"
+                        value={question.text }
                         onSave={this.handleSave}
                         edit={this.edit} />
                 </div>

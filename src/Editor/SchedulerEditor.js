@@ -33,6 +33,7 @@ export default class SchedulerEditor extends Component{
     
         const {question} = this.props;
 
+        const defaultValue = "enter your scheduler question ..."
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
         return (
@@ -43,7 +44,8 @@ export default class SchedulerEditor extends Component{
                 <div className="editor-block-content">
                     <ContentEditor 
                         id={question.id}
-                        className="BlockQuestionInput"
+                        placeholder= {defaultValue}
+                        className="block-question-input"
                         value={question.text}
                         onSave={this.handleSave}
                         edit={this.edit} />

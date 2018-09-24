@@ -1,3 +1,4 @@
+import './styles.css'
 export {BlockIcon} from './BlockIcon'
 export {BlockItem} from './BlockItem'
 export {BlockTypes,BlockTypesList} from './BlockTypesEnum'

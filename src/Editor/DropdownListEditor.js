@@ -35,6 +35,7 @@ export default class DropdownListEditor extends Component{
     
         const {question, isActive} = this.props;
 
+        const defaultValue = "enter your drop down selection question ..."
         const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
         const {editing} = this.state;
         return (<div className={editing ? questionTypeEditingStyle : "editor-block-container"} onClick={this.showProperties}>
@@ -44,12 +45,12 @@ export default class DropdownListEditor extends Component{
                     <div className="editor-block-content">
                         <ContentEditor 
                             id={question.id}
-                            className="BlockQuestionInput"
+                            placeholder= {defaultValue}
+                            className="block-question-input"
                             value={question.text}
                             onSave={this.handleSave}
                             edit={this.edit} />
-                    </div>
-                    <div className="editor-block-choices">
+                            
                         <ChoiceOptionItemField
                             question = {question}
                             addUpdateChoice = {this.props.addUpdateChoice}

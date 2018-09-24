@@ -14,7 +14,7 @@ import {AddressLookupEditModel} from './AddressLookupEditModel'
 import uuid from 'uuid/v4'
 
 export const BuildNewQuestionEditModel = (questionType,index) => {
-    const tempQuestion = new ShortTextEditModel("...",uuid(),(index + 1));
+    const tempQuestion = new ShortTextEditModel("",uuid(),(index + 1));
     tempQuestion.type = questionType;
     return BuildQuestionEditModel(tempQuestion);
 }

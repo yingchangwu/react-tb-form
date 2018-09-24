@@ -33,7 +33,9 @@ export class ChoiceOptionItemField extends React.Component{
         return (
             <div className="choice-question-items">
             {  question.choices &&  question.choices.map((choice)=>{
-                    return <Input
+                    return <div className="choice-question-item-input">
+                        <span>-</span>
+                        <Input
                         fluid
                         id={choice.id}
                         key={choice.id}
@@ -41,13 +43,19 @@ export class ChoiceOptionItemField extends React.Component{
                         defaultValue={choice.text} 
                         disabled = {!isActive}
                     />
+                        </div>
                 })
             }
-             Add Choice:   <Input
+            <div className="choice-question-item-input">
+                <span className="choice-input-prefix">-</span>
+             <Input
                     id={uuid()}
+                    className="choice-input"
                     onKeyPress={this.handleAddChoice} 
                     disabled = {!isActive}
+                    defaultValue="options"
                 />
+            </div>
             </div>
         );
     }

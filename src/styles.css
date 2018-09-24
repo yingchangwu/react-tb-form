@@ -11,3 +11,85 @@
   position: relative;
   width:100%;
 }
+.editor-block-icon-wrapper{
+    position: relative;
+    padding: 16px 0 24px 24px;
+    display:flex;
+    -webkit-box-flex: 0;
+    flex:none;
+    z-index: 1;
+}
+.choice-question-items{
+  display: block;
+}
+.choice-question-item-input{
+  display:inline-flex;
+  font-size:12px;
+}
+.choice-input{
+  border: none
+}
+.choice-input input{
+  border: none;
+  background-color: transparent;
+  padding: 0 5px 0 5px;
+}
+
+.choice-question-item-input span{
+  color: red;
+  padding: 0 0 0 8px;
+}
+
+.block-question-input{
+  display:inline-flex;
+  width:100%;
+  border: 0;
+  cursor: text;
+  min-height: 26px;
+  min-width: 250px;
+  word-wrap: break-word;
+}
+.block-question-input:focus{
+  outline-color: none;
+}
+
+.ShortText-editing{
+  background-color: rgb(228, 186, 63,0.07)
+}
+.LongText-editing{
+  background-color: rgb(203, 115, 43,0.07)
+}
+.Statement-editing{
+  background-color:  rgb(125, 187, 145,0.07)
+}
+.MultipleChoice-editing{
+  background-color: rgb(115, 190, 200,0.07)
+}
+.YesNo-editing{
+  background-color: rgb(199, 88, 117,0.07)
+}
+.Rating-editing{
+  background-color: rgb(208, 164, 99,0.07)
+}
+.DropdownList-editing{
+  background-color: rgb(118, 174, 189,0.07)
+}
+.DateTimePicker-editing{
+  background-color: rgb(239, 138, 120,0.07)
+}
+.FileUpload-editing{
+  background-color: rgb(128, 147, 166,0.07)
+}
+.Scheduler-editing{
+  background-color: rgb(128, 147, 166,0.07)
+}
+.comPlainTextContentEditable {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+.comPlainTextContentEditable--has-placeholder::before {
+  content: attr(placeholder);
+  opacity: 0.5;
+  color: inherit;
+  cursor: text;
+}

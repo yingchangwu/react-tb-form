@@ -26,7 +26,7 @@ export default {
     multiEntry(),
     external(),
     postcss({
-      modules: true
+      modules: false
     }),
     url(),
     babel({
