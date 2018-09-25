@@ -1,34 +1,44 @@
+//@flow
 import React, {Component} from 'react'
 import { BuildQuestionEditModel } from '../Models'
 import { BlockIcon } from '../BlockIcon'
 import { ContentEditor } from './Fields/ContentEditor'
-export default class RatingEditor extends Component{
+import {RatingEditModel} from '../Models/RatingEditModel'
 
-    constructor(props){
+type Props = {
+    question: RatingEditModel,
+    save: ({question:RatingEditModel}) => any,
+    focus: ({question:RatingEditModel}) => any
+}
+type State = {
+    editing: boolean
+}
+export default class RatingEditor extends Component<Props, State>{
+
+    constructor(props:Props){
         super(props);
         this.state = {
             editing: false
         };
-        this.edit = this.edit.bind(this);
         this.handleSave = this.handleSave.bind(this);
         this.showBlockInfo = this.showBlockInfo.bind(this);
     }
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps:Props){
         if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
             this.props.focus(nextProps.question);
         }
     }
-    edit(editing){
+    edit = (editing:boolean) => {
         this.setState({editing: editing});
     }
-    handleSave(text){
+    handleSave = (text:string) => {
         const question = BuildQuestionEditModel(this.props.question);
         question.text = text;
         if(this.props.save){
             this.props.save(question);
         }
     }
-    showBlockInfo(){
+    showBlockInfo = () => {
         if(this.props.focus){
             this.props.focus(this.props.question);
         }
