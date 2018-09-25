@@ -1,51 +1,42 @@
+//@flow
 import React, {Component} from 'react'
-import { BuildQuestionEditModel } from '../Models'
+import { BuildQuestionEditModel, ShortTextEditModel } from '../Models'
 import { BlockIcon } from '../BlockIcon'
 import {BlockTypes} from '../BlockTypesEnum'
 import { ContentEditor } from './Fields/ContentEditor'
-import {PropTypes} from 'prop-types'
 
-export default class ShortTextEditor extends Component{
-    static propTypes = {
-        question: PropTypes.object,
-        save: PropTypes.func,
-        focus: PropTypes.func
-    };
-    constructor(props){
+type Props = {
+    question: ShortTextEditModel,
+    save:({question:ShortTextEditModel}) => any,
+    focus:({question:ShortTextEditModel})=>any
+}
+type State = {
+    editing:boolean
+}
+export default class ShortTextEditor extends Component<Props,State>{
+    constructor(props:Props){
         super(props);
         this.state = {
             editing: false
         };
-        this.edit = this.edit.bind(this);
-        this.showProperties = this.showProperties.bind(this);
-        this.handleSave = this.handleSave.bind(this);
     }
-    componentWillReceiveProps(nextProps){
-        if(nextProps.question.type != this.props.question.type){
-            //update question type item
-            
-            if(nextProps.question.type == BlockTypes.ShortText){
-                this.setState({selectedIndex: 0});
-            }
-            if(nextProps.question.type == BlockTypes.MultipleChoice){
-                this.setState({selectedIndex: 1});
-            }
-        }
+    componentWillReceiveProps(nextProps:Props){
+
         if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
             this.props.focus(nextProps.question);
         }
     }
-    handleSave(text){
+    handleSave = (text:string) =>{
         const question = BuildQuestionEditModel(this.props.question);
         question.text = text;
         if(this.props.save){
             this.props.save(question);
         }
     }
-    edit(editing){
+    edit = (editing:boolean) =>{
         this.setState({editing: editing});
     }
-    showProperties(){
+    showProperties = () =>{
         if(this.props.focus){
             this.props.focus(this.props.question);
         }

@@ -20,8 +20,6 @@ export default class RatingEditor extends Component<Props, State>{
         this.state = {
             editing: false
         };
-        this.handleSave = this.handleSave.bind(this);
-        this.showBlockInfo = this.showBlockInfo.bind(this);
     }
     componentWillReceiveProps(nextProps:Props){
         if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
