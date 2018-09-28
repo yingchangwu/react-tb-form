@@ -1,29 +1,39 @@
+//@flow
 import React from 'react';
 import uuid from 'uuid/v4'
-import {ChoiceOptionItem} from '../../Models/'
+import {ChoiceOptionItem, MultipleChoiceEditModel, DropdownListEditModel} from '../../Models/'
 
 import { Input } from 'semantic-ui-react';
 
-export class ChoiceOptionItemField extends React.Component{
-    constructor(props){
+type Props = {
+    isActive: boolean,
+    question: MultipleChoiceEditModel | DropdownListEditModel,
+    addUpdateChoice: Function,
+
+}
+type States = {
+    currentInput: string
+}
+export class ChoiceOptionItemField extends React.Component<Props,States>{
+    constructor(props:Props){
         super(props);
         this.state = {
             currentInput:''
         };
     }
-    handleUpdateChoice = event =>{
-        const text = event.target.value;
+    handleUpdateChoice = (event:SyntheticEvent<HTMLInputElement>):void =>{
+        const text = event.currentTarget.value;
         console.log(`your choice is:${text}`);
-        const id = event.target.id;
+        const id = event.currentTarget.id;
         const choiceItem = new ChoiceOptionItem(text,id);
         this.props.addUpdateChoice(this.props.question.id,choiceItem);
     }
-    handleAddChoice = event =>{
+    handleAddChoice = (event:SyntheticKeyboardEvent<HTMLInputElement>):void  =>{
         if(event.key === 'Enter'){
-            const text = event.target.value;
-            event.target.value = "";
+            const text = event.currentTarget.value;
+            event.currentTarget.value = "";
             console.log(`your choice is:${text}`);
-            const id = event.target.id;
+            const id = event.currentTarget.id;
             const choiceItem = new ChoiceOptionItem(text,id);
             this.props.addUpdateChoice(this.props.question.id,choiceItem);
         }
