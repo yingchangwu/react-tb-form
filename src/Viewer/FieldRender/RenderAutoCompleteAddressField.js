@@ -1,3 +1,4 @@
+//@flow
 import React from 'react' 
 import PlacesAutocomplete,{
   geocodeByAddress,
@@ -12,25 +13,33 @@ const searchOptions = {
   types:['address']
 };
 
-export class RenderAutoCompleteAddressField extends React.Component{
-    constructor(props){
+type Props = {
+  input: any
+}
+
+type States = {
+  address:string
+}
+
+export class RenderAutoCompleteAddressField extends React.Component<Props,States>{
+    constructor(props:Props){
         super(props);
         this.state = {
             address:''
         }
     }
-    handleChange = address => {
+    handleChange = (address:string) => {
       this.setState({ address });
     };
   
-    handleSelect = address => {
+    handleSelect = (address:string) => {
         this.props.input.onChange(address);
       geocodeByAddress(address)
         .then(results => getLatLng(results[0]))
         .then(latLng => this.handleLatLng(address,latLng))
         .catch(error => console.error('Error', error));
     };
-    handleLatLng = (address,latLng) =>{
+    handleLatLng = (address:string,latLng:{lat:number, lng:number}) =>{
         console.log(address);
         console.log(latLng);
         const addressResult = {address:address,latLng:latLng};

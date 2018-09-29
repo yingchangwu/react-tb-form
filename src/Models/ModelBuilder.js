@@ -1,4 +1,9 @@
-import {BlockTypes} from '../BlockTypesEnum'
+//@flow
+
+import uuid from 'uuid/v4'
+
+
+import {BlockType} from '../BlockType'
 import {ShortTextEditModel} from './ShortTextEditModel'
 import {LongTextEditModel} from './LongTextEditModel'
 import {MultipleChoiceEditModel} from './MultipleChoiceEditModel'
@@ -11,54 +16,59 @@ import {SchedulerEditModel} from './SchedulerEditModel'
 import {StatementEditModel} from './StatementEditModel'
 import {AddressLookupEditModel} from './AddressLookupEditModel'
 
-import uuid from 'uuid/v4'
+import { EnumSymbol } from '../Enum';
+import { ChoiceOptionItem } from './ChoiceOptionItem';
 
-export const BuildNewQuestionEditModel = (questionType,index) => {
-    const tempQuestion = new ShortTextEditModel("",uuid(),(index + 1));
+export const BuildNewQuestionEditModel = (questionType:EnumSymbol,index:number) => {
+    const id:string = uuid();
+    const tempQuestion = new ShortTextEditModel("",id,(index + 1));
     tempQuestion.type = questionType;
     return BuildQuestionEditModel(tempQuestion);
 }
 
-export const BuildQuestionEditModel = (question) =>{
+
+export const BuildQuestionEditModel = (question : ShortTextEditModel | LongTextEditModel | MultipleChoiceEditModel | YesNoEditModel | RatingEditModel | DropdownListEditModel | DateTimePickerEditModel | FileUploadEditModel | StatementEditModel | SchedulerEditModel | AddressLookupEditModel | ShortTextEditModel) =>{
     let result = null;
     switch(question.type){
-        case BlockTypes.ShortText:
+        case BlockType["ShortText"]:
             result = new ShortTextEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.LongText:
+        case BlockType["LongText"]:
             result = new LongTextEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.MultipleChoice:
+        case BlockType["MultipleChoice"]:
             result = new MultipleChoiceEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription,[],false);
             if(question.choices){
-                result.choices = question.choices;
+                let newChoices = ((question.choices : any): Array<ChoiceOptionItem>);
+                result.choices = newChoices;
             }
             break;
-        case BlockTypes.YesNo:
+        case BlockType["YesNo"]:
             result = new YesNoEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.Rating:
+        case BlockType["Rating"]:
             result = new RatingEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.DropdownList:
+        case BlockType["DropdownList"]:
             result = new DropdownListEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             if(question.choices){
-                result.choices = question.choices;
+                let newChoices = ((question.choices : any): Array<ChoiceOptionItem>);
+                result.choices = newChoices;
             }
             break;
-        case BlockTypes.DateTimePicker:
+        case BlockType["DateTimePicker"]:
             result = new DateTimePickerEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.FileUpload:
+        case BlockType["FileUpload"]:
             result = new FileUploadEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.Statement:
+        case BlockType["Statement"]:
             result = new StatementEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.Scheduler:
+        case BlockType["Scheduler"]:
             result = new SchedulerEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.AddressLookup:
+        case BlockType["AddressLookup"]:
             result = new AddressLookupEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
         default:
@@ -67,46 +77,48 @@ export const BuildQuestionEditModel = (question) =>{
     return result;
 }
 
-export const MapQuestionEditModel = (question, type) =>{
+export const MapQuestionEditModel = (question: ShortTextEditModel | LongTextEditModel | MultipleChoiceEditModel | YesNoEditModel | RatingEditModel | DropdownListEditModel | DateTimePickerEditModel | FileUploadEditModel | StatementEditModel | SchedulerEditModel | AddressLookupEditModel | ShortTextEditModel, type: EnumSymbol) =>{
     let result = null;
     switch(type){
-        case BlockTypes.ShortText:
+        case BlockType["ShortText"]:
             result = new ShortTextEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.LongText:
+        case BlockType["LongText"]:
             result = new LongTextEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.MultipleChoice:
+        case BlockType["MultipleChoice"]:
             result = new MultipleChoiceEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription,[],false);
             if(question.choices){
-                result.choices = question.choices;
+                let newChoices = ((question.choices : any): Array<ChoiceOptionItem>);
+                result.choices = newChoices;
             }
             break;
-        case BlockTypes.YesNo:
+        case BlockType["YesNo"]:
             result = new YesNoEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.Rating:
+        case BlockType["Rating"]:
             result = new RatingEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.DropdownList:
+        case BlockType["DropdownList"]:
             result = new DropdownListEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             if(question.choices){
-                result.choices = question.choices;
+                let newChoices = ((question.choices : any): Array<ChoiceOptionItem>);
+                result.choices = newChoices;
             }
             break;
-        case BlockTypes.DateTimePicker:
+        case BlockType["DateTimePicker"]:
             result = new DateTimePickerEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.FileUpload:
+        case BlockType["FileUpload"]:
             result = new FileUploadEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.Statement:
+        case BlockType["Statement"]:
             result = new StatementEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.Scheduler:
+        case BlockType["Scheduler"]:
             result = new SchedulerEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
-        case BlockTypes.AddressLookup:
+        case BlockType["AddressLookup"]:
             result = new AddressLookupEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
             break;
         default:

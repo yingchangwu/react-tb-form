@@ -1,5 +1,8 @@
+//@flow
 export class ChoiceOptionItem {
-    constructor(text,id){
+    text: string;
+    id: number;
+    constructor(text:string,id:number){
         this.text = text;
         this.id = id;
     }

@@ -1,6 +1,16 @@
+//@flow
+import {EnumSymbol} from '../Enum';
 
 export class DefaultQuestionEditModel{
-    constructor(type,text,id,order,description,isRequired,showDescription){
+    type:EnumSymbol;
+    text:string;
+    id:string;
+    order:number;
+    description:string;
+    isRequired:boolean;
+    showDescription:boolean;
+
+    constructor(type:EnumSymbol,text:string,id:string,order:number,description:string,isRequired:boolean,showDescription:boolean){
         this.type=type;
         this.text = text;
         this.id = id;
@@ -9,7 +19,7 @@ export class DefaultQuestionEditModel{
         this.showDescription = showDescription;
         this.order = order;
     }
-    toggleDescription(){
+    toggleDescription():void{
         this.showDescription = !this.showDescription;
     }
 }

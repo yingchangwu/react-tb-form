@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import { BuildQuestionEditModel, ShortTextEditModel } from '../Models'
 import { BlockIcon } from '../BlockIcon'
-import {BlockTypes} from '../BlockTypesEnum'
+import {BlockType} from '../BlockType'
 import { ContentEditor } from './Fields/ContentEditor'
 
 type Props = {

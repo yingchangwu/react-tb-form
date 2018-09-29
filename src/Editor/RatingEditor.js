@@ -7,8 +7,8 @@ import {RatingEditModel} from '../Models/RatingEditModel'
 
 type Props = {
     question: RatingEditModel,
-    save: ({question:RatingEditModel}) => any,
-    focus: ({question:RatingEditModel}) => any
+    save: (question:RatingEditModel) => void,
+    focus: (question:RatingEditModel) => void
 }
 type State = {
     editing: boolean
@@ -20,11 +20,6 @@ export default class RatingEditor extends Component<Props, State>{
         this.state = {
             editing: false
         };
-    }
-    componentWillReceiveProps(nextProps:Props){
-        if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
-            this.props.focus(nextProps.question);
-        }
     }
     edit = (editing:boolean) => {
         this.setState({editing: editing});
@@ -45,8 +40,9 @@ export default class RatingEditor extends Component<Props, State>{
     
         const {question} = this.props;
 
-        const defaultValue = "enter your rating question ..."
-        const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
+        const defaultValue = "enter your rating question ...";
+        const typeName = question.type.getName();
+        const questionTypeEditingStyle = typeName +"-editing editor-block-container ";
         const {editing} = this.state;
         return       <div className={editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showBlockInfo}>
                         <div className="editor-block-icon-wrapper">

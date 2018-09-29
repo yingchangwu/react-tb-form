@@ -1,9 +1,12 @@
-import {BlockTypes} from '../BlockTypesEnum'
+//@flow
+import {BlockType} from '../BlockType'
 import {DefaultQuestionEditModel} from './DefaultQuestionEditModel'
+import { ChoiceOptionItem } from './ChoiceOptionItem';
 
 export class DropdownListEditModel extends DefaultQuestionEditModel{
-    constructor(text,id,order,description = "",isRequired = false,showDescription=false,choices=[]){
-        super(BlockTypes.DropdownList,text,id,order,description,isRequired,showDescription);
+    choices: Array<ChoiceOptionItem>;
+    constructor(text:string,id:string,order:number,description:string = "",isRequired:boolean = false,showDescription:boolean=false,choices:Array<ChoiceOptionItem>=[]){
+        super(BlockType["DropdownList"],text,id,order,description,isRequired,showDescription);
         this.choices = choices;
     }
 }

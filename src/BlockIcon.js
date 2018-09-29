@@ -1,6 +1,6 @@
 import React from "react";
 import{ ShortText,LongText,YesNo,MultipleChoice,Rating,DropdownList,FileUpload,DatePicker,Statement,Scheduler} from 'react-tb-icons'
-import {BlockTypes} from './BlockTypesEnum'
+import {BlockTypes} from './BlockType'
 const styles={
   blockSvgOrderedIcon:{
     width:'52px',

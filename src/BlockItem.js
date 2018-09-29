@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlockTypes } from './BlockTypesEnum'
+import { BlockTypes } from './BlockType'
 import {
     ShortTextEditor,
     MultipleChoiceEditor,

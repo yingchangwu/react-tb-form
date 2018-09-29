@@ -1,7 +1,8 @@
-import {BlockTypes} from '../BlockTypesEnum'
+//@flow
+import {BlockType} from '../BlockType'
 import {DefaultQuestionEditModel} from './DefaultQuestionEditModel'
 export class SchedulerEditModel extends DefaultQuestionEditModel{
-    constructor(text,id,order,description = "",isRequired = false,showDescription=false){
-        super(BlockTypes.Scheduler,text,id,order,description,isRequired,showDescription);
+    constructor(text:string,id:string,order:number,description:string = "",isRequired:boolean = false,showDescription:boolean=false){
+        super(BlockType["Scheduler"],text,id,order,description,isRequired,showDescription);
     }
 }
