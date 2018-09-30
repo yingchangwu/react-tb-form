@@ -1,14 +1,16 @@
 //@flow
 import React, {Component} from 'react'
-import { BuildQuestionEditModel, ShortTextEditModel } from '../Models'
-import { BlockIcon } from '../BlockIcon'
+import { ShortTextEditModel } from '../Models/ShortTextEditModel'
+
+import { BuildModel } from '../Models/ModelBuilder'
+import {BlockIcon} from 'react-tb-icons'
 import {BlockType} from '../BlockType'
 import { ContentEditor } from './Fields/ContentEditor'
 
 type Props = {
     question: ShortTextEditModel,
-    save:({question:ShortTextEditModel}) => any,
-    focus:({question:ShortTextEditModel})=>any
+    save:(question:ShortTextEditModel) => void,
+    focus:(question:ShortTextEditModel)=> void
 }
 type State = {
     editing:boolean
@@ -20,14 +22,8 @@ export default class ShortTextEditor extends Component<Props,State>{
             editing: false
         };
     }
-    componentWillReceiveProps(nextProps:Props){
-
-        if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
-            this.props.focus(nextProps.question);
-        }
-    }
     handleSave = (text:string) =>{
-        const question = BuildQuestionEditModel(this.props.question);
+        const question = this.props.question;
         question.text = text;
         if(this.props.save){
             this.props.save(question);
@@ -44,7 +40,7 @@ export default class ShortTextEditor extends Component<Props,State>{
     render(){
         const defaultValue = "enter your short answer question ..."
         const {question} = this.props;
-        const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
+        const questionTypeEditingStyle = question.type.getName() +"-editing editor-block-container ";
         const {editing} = this.state;
         return (
             <div className= {editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showProperties}>

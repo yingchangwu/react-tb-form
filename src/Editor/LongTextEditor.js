@@ -1,35 +1,39 @@
+//@flow
 import React, {Component} from 'react'
-import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../BlockIcon'
+import { LongTextEditModel } from '../Models/LongTextEditModel'
+
+import { BuildModel } from '../Models/ModelBuilder'
+import {BlockIcon} from 'react-tb-icons'
 import { ContentEditor } from './Fields/ContentEditor'
+type Props = {
+    question: LongTextEditModel,
+    save: (LongTextEditModel)=>void,
+    focus:(LongTextEditModel)=>void
+}
 
-export default class LongTextEditor extends Component{
+type State = {
+    editing: boolean
+}
+export default class LongTextEditor extends Component<Props,State>{
 
-    constructor(props){
+    constructor(props:Props){
         super(props);
         this.state = {
             editing: false
         };
-        this.edit = this.edit.bind(this);
-        this.handleSave = this.handleSave.bind(this);
-        this.showBlockInfo = this.showBlockInfo.bind(this);
     }
-    componentWillReceiveProps(nextProps){
-        if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
-            this.props.focus(nextProps.question);
-        }
-    }
-    edit(editing){
+    edit = (editing:boolean):void => {
         this.setState({editing: editing});
     }
-    handleSave(text){
-        const question = BuildQuestionEditModel(this.props.question);
+    handleSave = (text:string):void => {
+        const question = this.props.question;
         question.text = text;
+        const buildModel = new BuildModel(question);
         if(this.props.save){
-            this.props.save(question);
+            this.props.save(buildModel.toLongText());
         }
     }
-    showBlockInfo(){
+    showBlockInfo = ():void => {
         if(this.props.focus){
             this.props.focus(this.props.question);
         }
@@ -39,7 +43,7 @@ export default class LongTextEditor extends Component{
         const {question} = this.props;
 
         const defaultValue = "enter your long answer question ..."
-        const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
+        const questionTypeEditingStyle = question.type.getName() +"-editing editor-block-container ";
         const {editing} = this.state;
         return  <div className={editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showBlockInfo}>
                     <div className="editor-block-icon-wrapper">

@@ -1,9 +1,10 @@
 //@flow
+
 import React, {Component} from 'react'
-import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../BlockIcon'
-import { ContentEditor } from './Fields/ContentEditor'
 import {RatingEditModel} from '../Models/RatingEditModel'
+import { BuildModel } from '../Models/ModelBuilder'
+import {BlockIcon} from 'react-tb-icons'
+import { ContentEditor } from './Fields/ContentEditor'
 
 type Props = {
     question: RatingEditModel,
@@ -24,11 +25,12 @@ export default class RatingEditor extends Component<Props, State>{
     edit = (editing:boolean) => {
         this.setState({editing: editing});
     }
-    handleSave = (text:string) => {
-        const question = BuildQuestionEditModel(this.props.question);
+    handleSave = (text:string):void => {
+        const question = this.props.question;
         question.text = text;
+        const buildModel = new BuildModel(question);
         if(this.props.save){
-            this.props.save(question);
+            this.props.save(buildModel.toRating());
         }
     }
     showBlockInfo = () => {

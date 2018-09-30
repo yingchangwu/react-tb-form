@@ -1,44 +1,46 @@
-import React, {Component} from 'react'
-import { BuildQuestionEditModel } from '../Models'
-import { BlockIcon } from '../BlockIcon'
+//@flow
+import * as React from 'react'
+import { BuildModel } from '../Models/ModelBuilder'
+import {AddressLookupEditModel} from '../Models/AddressLookupEditModel'
+import {BlockIcon} from 'react-tb-icons'
 import { ContentEditor } from './Fields/ContentEditor'
+type Props = {
+    question: AddressLookupEditModel,
+    save: (question:AddressLookupEditModel) => void,
+    focus: (question:AddressLookupEditModel) => void
+}
+type State = {
+    editing: boolean
+}
 
-export default class AddressLookupEditor extends Component{
+export default class AddressLookupEditor extends React.Component<Props,State>{
 
-    constructor(props){
+    constructor(props:Props){
         super(props);
         this.state = {
             editing: false
         };
-        this.edit = this.edit.bind(this);
-        this.showProperties = this.showProperties.bind(this);
-        this.handleSave = this.handleSave.bind(this);
     }
-    componentWillReceiveProps(nextProps){
-        if(this.props.question.text !== nextProps.question.text || (this.props.question.choices != undefined && nextProps.question.choices != undefined &&(this.props.question.choices.length !== nextProps.question.choices.length))){
-            this.props.focus(nextProps.question);
-        }
-    }
-    handleSave(text){
-        const question = BuildQuestionEditModel(this.props.question);
+    handleSave = (text:string):void =>{
+        const question = this.props.question;
         question.text = text;
+        const buildModel = new BuildModel(question);
         if(this.props.save){
-            this.props.save(question);
+            this.props.save(buildModel.toAddressLookup());
         }
     }
-    edit(editing){
+    edit = (editing:boolean):void =>{
         this.setState({editing: editing});
     }
-    showProperties(){
+    showProperties():void{
         if(this.props.focus){
             this.props.focus(this.props.question);
         }
     }
     render(){
-    
+        const {question} = this.props;
         const defaultValue = "enter your address ..."
-        const {question, isActive} = this.props;
-        const questionTypeEditingStyle = question.type.key() +"-editing editor-block-container ";
+        const questionTypeEditingStyle = question.type.getName() +"-editing editor-block-container ";
         const {editing} = this.state;
         return (
             <div className= {editing ? questionTypeEditingStyle : "editor-block-container"}  onClick={this.showProperties}>

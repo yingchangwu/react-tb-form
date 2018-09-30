@@ -1,14 +1,15 @@
 //@flow
 import React from 'react';
 import uuid from 'uuid/v4'
-import {ChoiceOptionItem, MultipleChoiceEditModel, DropdownListEditModel} from '../../Models/'
-
+import {ChoiceOptionItem} from '../../Models/ChoiceOptionItem'
+import {MultipleChoiceEditModel} from '../../Models/MultipleChoiceEditModel'
+import {DropdownListEditModel} from '../../Models/DropdownListEditModel'
 import { Input } from 'semantic-ui-react';
 
 type Props = {
     isActive: boolean,
     question: MultipleChoiceEditModel | DropdownListEditModel,
-    addUpdateChoice: Function,
+    addUpdateChoice: (string, ChoiceOptionItem)=>void,
 
 }
 type States = {
