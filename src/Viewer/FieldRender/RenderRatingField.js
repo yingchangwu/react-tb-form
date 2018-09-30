@@ -1,8 +1,15 @@
+//@flow
 import React from 'react'
 import {Rating} from 'semantic-ui-react'
-export class RenderRatingField extends React.Component{
+import type { FieldProps } from 'redux-form'
+type Props = {
+    defaultRating: number,
+    maxRating: number
+} & FieldProps;
 
-    handleRating = (e, { rating, maxRating }) =>{
+export class RenderRatingField extends React.Component<Props>{
+
+    handleRating = (e:SyntheticEvent<HTMLElement>, { rating, maxRating}:{rating:number,maxRating:number}) =>{
         this.props.input.onChange(rating);
     }
     render(){

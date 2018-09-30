@@ -5,7 +5,7 @@ import PlacesAutocomplete,{
   getLatLng,
 }  from 'react-places-autocomplete'
 import {Input} from 'semantic-ui-react'
-
+import type { FieldProps } from 'redux-form'
 import ReactDependentScript from "react-dependent-script"
 
 const searchOptions = {
@@ -13,16 +13,12 @@ const searchOptions = {
   types:['address']
 };
 
-type Props = {
-  input: any
-}
-
 type States = {
   address:string
 }
 
-export class RenderAutoCompleteAddressField extends React.Component<Props,States>{
-    constructor(props:Props){
+export class RenderAutoCompleteAddressField extends React.Component<FieldProps,States>{
+    constructor(props:FieldProps){
         super(props);
         this.state = {
             address:''

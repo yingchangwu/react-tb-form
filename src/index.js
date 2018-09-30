@@ -1,7 +1,7 @@
 import './styles.css'
-export {BlockIcon} from './BlockIcon'
 export {BlockItem} from './BlockItem'
-export {BlockTypes,BlockTypesList} from './BlockTypesEnum'
+export {BlockType} from './BlockType'
+export {BlockTypeList} from './BlockTypeList'
 export {
     ShortTextEditor,
     MultipleChoiceEditor,
@@ -15,19 +15,3 @@ export {
     SchedulerEditor,
     NewDefaultEditor,
     AddressLookupEditor} from './Editor'
-export {
-    BuildQuestionEditModel,
-    BuildNewQuestionEditModel,
-    MapQuestionEditModel,
-    MultipleChoiceEditModel,
-    ChoiceOptionItem,
-    ShortTextEditModel,
-    YesNoEditModel,
-    RatingEditModel,
-    LongTextEditModel,
-    FileUploadEditModel,
-    DropdownListEditModel,
-    DateTimePickerEditModel,
-    StatementEditModel,
-    SchedulerEditModel,
-    AddressLookupEditModel} from './Models'

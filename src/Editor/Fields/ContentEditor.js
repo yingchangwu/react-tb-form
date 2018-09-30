@@ -1,11 +1,25 @@
+//@flow
 import React from 'react';
+import type { FormProps } from 'redux-form'
 
-export class ContentEditor extends React.Component{
+type Props = {
+    className: string,
+    onSave:(value:string) => void, 
+    edit:(edit:boolean) =>void,
+    placeholder:string,
+    value: string
+} & FormProps;
+
+type State = {
+    editing:boolean
+}
+
+export class ContentEditor extends React.Component<Props,State>{
     state = {
         editing: false
     }
 
-    toggleEdit = (e) =>{
+    toggleEdit = (e:SyntheticEvent<HTMLDivElement>) =>{
         e.stopPropagation();
         if(this.state.editing){
             this.cancel();
@@ -20,28 +34,30 @@ export class ContentEditor extends React.Component{
             editing: true
         }, () =>{
             if(!currentEditingStatus)
-                this.placeCursorAtEnd(this.domElm);
+                //this.placeCursorAtEnd(this.domElm);
                 this.props.edit(true);
         });  
     }
+    // placeCursorAtEnd(el:?HTMLDivElement){
+    //     if(el != null){
+    //         el.focus();
+    //         if (typeof window.getSelection != "undefined"
+    //                 && typeof document.createRange != "undefined") {
+    //             let range = document.createRange();
+    //             range.selectNodeContents(el);
+    //             range.collapse(false);
+    //             let sel = window.getSelection();
+    //             sel.removeAllRanges();
+    //             sel.addRange(range);
+    //         } else if (document.body != null && typeof document.body.createTextRange != "undefined") {
+    //             let textRange = document.body.createTextRange();
+    //             textRange.moveToElementText(el);
+    //             textRange.collapse(false);
+    //             textRange.select();
+    //         }
+    //     }
 
-    placeCursorAtEnd(el){
-        el.focus();
-        if (typeof window.getSelection != "undefined"
-                && typeof document.createRange != "undefined") {
-            let range = document.createRange();
-            range.selectNodeContents(el);
-            range.collapse(false);
-            let sel = window.getSelection();
-            sel.removeAllRanges();
-            sel.addRange(range);
-        } else if (typeof document.body.createTextRange != "undefined") {
-            let textRange = document.body.createTextRange();
-            textRange.moveToElementText(el);
-            textRange.collapse(false);
-            textRange.select();
-        }
-    }
+    // }
 
     save = () => {
         this.setState({
@@ -49,7 +65,7 @@ export class ContentEditor extends React.Component{
         }, () => {
             if(this.props.onSave){
                 this.props.edit(false);
-                if(this.isValueChanged()){
+                if(this.isValueChanged() && this.domElm != null){
                     this.props.onSave(this.domElm.textContent);
                 }
             }
@@ -64,11 +80,14 @@ export class ContentEditor extends React.Component{
         });
       };
   
-    isValueChanged = () => {
-    return this.props.value !== this.domElm.textContent
+    isValueChanged = ():boolean => {
+        if(this.domElm != null){
+            return this.props.value !== this.domElm.textContent
+        }
+        return false;
     };
   
-    handleKeyDown = (e) => {
+    handleKeyDown = (e:SyntheticKeyboardEvent<HTMLDivElement>) => {
         const { key } = e;
         switch (key) {
             case 'Enter':
@@ -78,9 +97,10 @@ export class ContentEditor extends React.Component{
         }
     };
 
+    domElm : ?HTMLDivElement
 
     render() {
-        const { className, onSave, edit, restProps } = this.props;
+        const { className, onSave, edit, ...restProps } = this.props;
         const { editing } = this.state;
         var editingStyle = editing ? "editing" : "";
         return (

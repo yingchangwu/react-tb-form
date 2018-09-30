@@ -1,21 +1,35 @@
+//@flow
 import React from 'react'
 import Dropzone from 'react-dropzone'
 import {Table, Image, Button} from 'semantic-ui-react'
 import {ImgUploadCloud} from 'react-tb-icons'
+import {request} from 'superagent'
+
+import type { FieldProps } from 'redux-form'
 
 const fileMaxSize = 1000000000
 const acceptedFileTypes = 'image/x-png,image/png,image/jpg,image/jpeg,image/gif'
 const acceptFileTypesArray = acceptedFileTypes.split(',').map((item)=>{return item.trim()})
 
-export class RenderDropzoneField extends React.Component{
-  constructor(props){
+type Props = {
+  uploadEndpointUrl:string,
+  deleteEndpointUrl:string,
+  name:string
+} & FieldProps;
+
+type State = {
+  uploadedFiles: Array<any>
+}
+
+export class RenderDropzoneField extends React.Component<Props,State>{
+  constructor(props:Props){
     super(props);
     this.state = {
       uploadedFiles:[]
     }
   }
 
-  verifyFile = (files) =>{
+  verifyFile = (files:Array<any>) =>{
     if(files && files.length > 0){
       const currentFile = files[0]
       const currentFileType = currentFile.type
@@ -33,7 +47,7 @@ export class RenderDropzoneField extends React.Component{
     return false;
   }
 
-   handleOnDrop = (files, rejectedFiles) =>{
+   handleOnDrop = (files:Array<any>, rejectedFiles:Array<any>) =>{
     if(rejectedFiles && rejectedFiles.length > 0){
       this.verifyFile(rejectedFiles)
     }
@@ -51,7 +65,7 @@ export class RenderDropzoneField extends React.Component{
     }
   } 
 
-  handleFileUpload = (files) =>{
+  handleFileUpload = (files:Array<any>) =>{
     const url = this.props.uploadEndpointUrl;
      
      files.forEach(file=>{
@@ -65,7 +79,7 @@ export class RenderDropzoneField extends React.Component{
      })
   }
 
-  uploadComplete = (error, response) =>{    
+  uploadComplete = (error:any, response:any) =>{    
     const fileName = response.body.fileName;
     const uploadedFileIdx = this.state.uploadedFiles.findIndex(file=>file.name == fileName);
     const uploadedFile = this.state.uploadedFiles[uploadedFileIdx];
@@ -77,10 +91,10 @@ export class RenderDropzoneField extends React.Component{
 
   }
 
-  deleteFile = (e) =>{
+  deleteFile = (e:SyntheticMouseEvent<HTMLElement>) =>{
     e.preventDefault();
     const url = this.props.deleteEndpointUrl;
-    const fileName = e.target.dataset.filename;
+    const fileName = e.currentTarget.dataset.filename;
     request.get(url)
       .query({fileName: fileName})
       .then(res =>{
@@ -96,8 +110,7 @@ export class RenderDropzoneField extends React.Component{
 
 
 
-  renderImageList = (files) =>{
-    console.log('rendering images' + files);
+  renderImageList = (files:Array<any>) =>{
 
     const fileRows =  files.map((fileModel)=>{
       return <Table.Row>

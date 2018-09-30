@@ -16,15 +16,21 @@ type Props = {
 }
 
 type State = {
-    text:string
+    text:string,
+    editing:boolean
 }
 export default class NewDefaultEditor extends Component<Props,State>{
 
     constructor(props:Props){
         super(props);
         this.state = {
-            text:''
+            text:'',
+            editing: false
         };
+    }
+
+    edit = (editing:boolean):void =>{
+        this.setState({editing: editing});
     }
     handleSave = (text:string):void =>{
         if(text.trim().length == 0){
@@ -61,6 +67,7 @@ export default class NewDefaultEditor extends Component<Props,State>{
                                 placeholder= {defaultValue}
                                 className="block-question-input"
                                 value=""
+                                edit={this.edit}
                                 onSave={this.handleSave} />
                         </div>
                     </div>
