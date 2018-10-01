@@ -20,7 +20,7 @@ import { EnumSymbol } from '../Enum';
 import { ChoiceOptionItem } from './ChoiceOptionItem';
 
 
-export const BuildNewQuestionEditModel = (questionType:EnumSymbol,index:number) => {
+export const CreateNewEditModel = (questionType:EnumSymbol,index:number) => {
     const id:string = uuid();
     const tempQuestion = new ShortTextEditModel("",id,(index + 1));
     tempQuestion.type = questionType;
@@ -101,42 +101,5 @@ export class ModelBuilder{
 
     toFileUpload():FileUploadEditModel{
         return new FileUploadEditModel(this.question.text,this.question.id,this.question.order,this.question.description,this.question.isRequired,this.question.showDescription);
-    }
-}
-
-
-export const MapQuestionEditModel = (question: ShortTextEditModel | LongTextEditModel | MultipleChoiceEditModel | YesNoEditModel | RatingEditModel | DropdownListEditModel | DateTimePickerEditModel | FileUploadEditModel | StatementEditModel | SchedulerEditModel | AddressLookupEditModel | ShortTextEditModel, type: EnumSymbol) =>{
-    let result = null;
-    switch(type){
-        case BlockType[BlockTypeName.ShortText]: return new ShortTextEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
-        case BlockType[BlockTypeName.LongText]: return new LongTextEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
-        case BlockType[BlockTypeName.MultipleChoice]:
-            let choices:Array<ChoiceOptionItem> = [];
-            if(question.choices){
-                choices = ((question.choices : any): Array<ChoiceOptionItem>);
-            }
-            return new MultipleChoiceEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription,choices,false);
-        case BlockType[BlockTypeName.YesNo]:
-            return new YesNoEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
-        case BlockType[BlockTypeName.Rating]:
-            return new RatingEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
-        case BlockType[BlockTypeName.DropdownList]:
-            let dropdownListChoices:Array<ChoiceOptionItem> = [];
-            if(question.choices){
-                dropdownListChoices = ((question.choices : any): Array<ChoiceOptionItem>);
-            }
-            return new DropdownListEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription,dropdownListChoices);
-        case BlockType[BlockTypeName.DateTimePicker]:
-            return new DateTimePickerEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
-        case BlockType[BlockTypeName.FileUpload]:
-            return new FileUploadEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
-        case BlockType[BlockTypeName.Statement]:
-            return new StatementEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
-        case BlockType[BlockTypeName.Scheduler]:
-            return new SchedulerEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
-        case BlockType[BlockTypeName.AddressLookup]:
-            return new AddressLookupEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
-        default:
-            return new ShortTextEditModel(question.text,question.id,question.order,question.description,question.isRequired,question.showDescription);
     }
 }
