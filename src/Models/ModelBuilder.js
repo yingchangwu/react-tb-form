@@ -49,6 +49,34 @@ export class ModelBuilder{
         this.question = question;
     }
 
+    to(type:string): typeof AllEditModel{
+        switch(type){
+            case BlockTypeName.ShortText:
+                return this.toShortText();
+            case BlockTypeName.Statement:
+                    return this.toStatement();
+            case BlockTypeName.LongText:
+                return this.toLongText();
+            case BlockTypeName.MultipleChoice:
+                return this.toMultipleChoice();
+            case BlockTypeName.DropdownList:
+                return this.toDropdownList();
+            case BlockTypeName.YesNo:
+                return this.toYesNo();
+            case BlockTypeName.Rating:
+                return this.toRating();
+            case BlockTypeName.Scheduler:
+                return this.toScheduler();
+            case BlockTypeName.FileUpload:
+                return this.toFileUpload();
+            case BlockTypeName.DateTimePicker:
+                return this.toDateTimePicker();
+            case BlockTypeName.AddressLookup:
+                return this.toAddressLookup();
+            default:
+                return this.toShortText();
+        }
+    } 
     toShortText():ShortTextEditModel{
         return new ShortTextEditModel(this.question.text,this.question.id,this.question.order,this.question.description,this.question.isRequired,this.question.showDescription);
     }
