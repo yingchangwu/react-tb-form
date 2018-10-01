@@ -2,8 +2,8 @@
 import React, {Component} from 'react'
 import { StatementEditModel } from '../Models/StatementEditModel'
 
-import { BuildModel } from '../Models/ModelBuilder'
-import {BlockIcon} from 'react-tb-icons'
+import { ModelBuilder } from '../Models/ModelBuilder'
+import {BlockIcon} from '../BlockIcon'
 import { ContentEditor } from './Fields/ContentEditor';
 
 type Props = {
@@ -25,8 +25,7 @@ export default class StatementEditor extends Component<Props,State>{
     handleSave = (text:string):void =>{
         const question = this.props.question;
         question.text = text;
-        const buildModel = new BuildModel(question);
-        buildModel.toShortText
+        const buildModel = new ModelBuilder(question);
         if(this.props.save){
             this.props.save(buildModel.toStatement());
         }

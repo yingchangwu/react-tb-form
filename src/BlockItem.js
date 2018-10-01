@@ -1,6 +1,6 @@
 //@flow
 import React from 'react'
-import { BlockType } from './BlockType'
+import { BlockType,BlockTypeName } from './BlockType'
 import {
     ShortTextEditor,
     MultipleChoiceEditor,
@@ -37,62 +37,62 @@ import {ChoiceOptionItem} from './Models/ChoiceOptionItem'
 export const BlockItem = ({question,isActive,save,focus,addUpdateChoice}: blockItemProps) =>{
         let result = <div>INCORRECT QUESTION TYPE</div>;
         switch(question.type){
-            case BlockType["ShortText"]:
+            case BlockType[BlockTypeName.ShortText]:
                 result = <ShortTextEditor question={question} 
                                         save={save}
                                         focus={focus} />
             break;
-            case BlockType["LongText"]:
+            case BlockType[BlockTypeName.LongText]:
                 result = <LongTextEditor question={question} 
                                         save={save}
                                         focus={focus} />
                 break;
-            case BlockType["YesNo"]:
+            case BlockType[BlockTypeName.YesNo]:
                 result = <YesNoEditor question={question} 
                                         save={save}
                                         focus={focus}
                                         addUpdateChoice={addUpdateChoice} />
                 break;
-            case BlockType["MultipleChoice"]:
+            case BlockType[BlockTypeName.MultipleChoice]:
             result = <MultipleChoiceEditor question={question} 
                                     isActive={isActive}
                                     save={save}
                                     focus={focus}
                                     addUpdateChoice={addUpdateChoice} />
             break;
-            case BlockType["Rating"]:
+            case BlockType[BlockTypeName.Rating]:
             result = <RatingEditor question={question} 
                                     save={save}
                                     focus={focus} />
             break;
-            case BlockType["DropdownList"]:
+            case BlockType[BlockTypeName.DropdownList]:
             result = <DropdownListEditor question={question} 
                                     isActive={isActive}
                                     save={save}
                                     focus={focus}
                                     addUpdateChoice={addUpdateChoice} />
             break;
-            case BlockType["DateTimePicker"]:
+            case BlockType[BlockTypeName.DateTimePicker]:
             result = <DateTimePickerEditor question={question} 
                                     save={save}
                                     focus={focus}/>
             break;
-            case BlockType["FileUpload"]:
+            case BlockType[BlockTypeName.FileUpload]:
             result = <FileUploadEditor question={question} 
                                     save={save}
                                     focus={focus}/>
             break;
-            case BlockType["Statement"]:
+            case BlockType[BlockTypeName.Statement]:
             result = <StatementEditor question={question} 
                                     save={save}
                                     focus={focus}/>
             break;
-            case BlockType["Scheduler"]:
+            case BlockType[BlockTypeName.Scheduler]:
             result = <SchedulerEditor question={question} 
                                     save={save}
                                     focus={focus}/>
             break;
-            case BlockType["AddressLookup"]:
+            case BlockType[BlockTypeName.AddressLookup]:
             result = <AddressLookupEditor question={question} 
                                     save={save}
                                     focus={focus}/>

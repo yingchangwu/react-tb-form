@@ -14,3 +14,18 @@ export const BlockType = new Enum({
     Scheduler:{value:10,description:"Scheduler"},
     AddressLookup:{value:11,description:"Address"}
 });
+
+
+export const BlockTypeName = {
+    Statement: "Statement",
+    ShortText: "ShortText",
+    LongText: "LongText",
+    MultipleChoice:"MultipleChoice",
+    YesNo:"YesNo",
+    Rating:"Rating",
+    DropdownList:"DropdownList",
+    DateTimePicker:"DateTimePicker",
+    FileUpload:"FileUpload",
+    Scheduler:"Scheduler",
+    AddressLookup:"AddressLookup"
+}

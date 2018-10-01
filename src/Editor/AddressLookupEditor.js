@@ -1,8 +1,8 @@
 //@flow
 import * as React from 'react'
-import { BuildModel } from '../Models/ModelBuilder'
+import { ModelBuilder } from '../Models/ModelBuilder'
 import {AddressLookupEditModel} from '../Models/AddressLookupEditModel'
-import {BlockIcon} from 'react-tb-icons'
+import {BlockIcon} from '../BlockIcon'
 import { ContentEditor } from './Fields/ContentEditor'
 type Props = {
     question: AddressLookupEditModel,
@@ -24,7 +24,7 @@ export default class AddressLookupEditor extends React.Component<Props,State>{
     handleSave = (text:string):void =>{
         const question = this.props.question;
         question.text = text;
-        const buildModel = new BuildModel(question);
+        const buildModel = new ModelBuilder(question);
         if(this.props.save){
             this.props.save(buildModel.toAddressLookup());
         }

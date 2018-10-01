@@ -3,7 +3,8 @@ import React from 'react'
 import Dropzone from 'react-dropzone'
 import {Table, Image, Button} from 'semantic-ui-react'
 import {ImgUploadCloud} from 'react-tb-icons'
-import {request} from 'superagent'
+
+const request = require('superagent')
 
 import type { FieldProps } from 'redux-form'
 
@@ -107,9 +108,6 @@ export class RenderDropzoneField extends React.Component<Props,State>{
         this.setState(prevState=>({uploadedFiles: [...prevState.uploadedFiles.slice(0,fileIdx),...prevState.uploadedFiles.slice(fileIdx+1)]}));
       });
   }
-
-
-
   renderImageList = (files:Array<any>) =>{
 
     const fileRows =  files.map((fileModel)=>{

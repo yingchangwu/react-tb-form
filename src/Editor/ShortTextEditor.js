@@ -2,8 +2,8 @@
 import React, {Component} from 'react'
 import { ShortTextEditModel } from '../Models/ShortTextEditModel'
 
-import { BuildModel } from '../Models/ModelBuilder'
-import {BlockIcon} from 'react-tb-icons'
+import { ModelBuilder } from '../Models/ModelBuilder'
+import {BlockIcon} from '../BlockIcon'
 import {BlockType} from '../BlockType'
 import { ContentEditor } from './Fields/ContentEditor'
 
@@ -25,8 +25,9 @@ export default class ShortTextEditor extends Component<Props,State>{
     handleSave = (text:string) =>{
         const question = this.props.question;
         question.text = text;
+        const modelBuilder = new ModelBuilder(question);
         if(this.props.save){
-            this.props.save(question);
+            this.props.save(modelBuilder.toShortText());
         }
     }
     edit = (editing:boolean) =>{

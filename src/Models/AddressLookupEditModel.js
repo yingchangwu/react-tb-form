@@ -1,5 +1,5 @@
 //@flow
-import {BlockType} from '../BlockType'
+import {BlockType,BlockTypeName} from '../BlockType'
 import {DefaultQuestionEditModel} from './DefaultQuestionEditModel'
 export class AddressLookupEditModel extends DefaultQuestionEditModel{
     constructor(
@@ -11,7 +11,7 @@ export class AddressLookupEditModel extends DefaultQuestionEditModel{
         showDescription:boolean
     ):AddressLookupEditModel
     {
-        super(BlockType["AddressLookup"],text,id,order,description,isRequired,showDescription);
+        super(BlockType[BlockTypeName.AddressLookup],text,id,order,description,isRequired,showDescription);
         return this;
     }
 }

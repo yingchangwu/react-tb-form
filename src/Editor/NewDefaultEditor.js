@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 
 import {ShortTextEditModel} from '../Models/ShortTextEditModel'
 
-import { BuildModel } from '../Models/ModelBuilder'
-import {BlockIcon} from 'react-tb-icons'
-import {BlockType} from '../BlockType'
+import { ModelBuilder } from '../Models/ModelBuilder'
+import {BlockIcon} from '../BlockIcon'
+import {BlockType,BlockTypeName} from '../BlockType'
 import { ContentEditor } from './Fields/ContentEditor'
 type Props = {
     save: (question:ShortTextEditModel)=>void,
@@ -59,7 +59,7 @@ export default class NewDefaultEditor extends Component<Props,State>{
         
         return      <div className="editor-block-container" >
                         <div className="editor-block-icon-wrapper">
-                            <BlockIcon type={BlockType["ShortText"]} order={order} />
+                            <BlockIcon type={BlockType[BlockTypeName.ShortText]} order={order} />
                         </div>
                         <div className="editor-block-content">
                             <ContentEditor 

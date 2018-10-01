@@ -2,8 +2,8 @@
 import React, {Component} from 'react'
 import { SchedulerEditModel } from '../Models/SchedulerEditModel'
 
-import { BuildModel } from '../Models/ModelBuilder'
-import {BlockIcon} from 'react-tb-icons'
+import { ModelBuilder } from '../Models/ModelBuilder'
+import {BlockIcon} from '../BlockIcon'
 import { ContentEditor } from './Fields/ContentEditor'
 type Props = {
     question: SchedulerEditModel,
@@ -28,7 +28,7 @@ export default class SchedulerEditor extends Component<Props,State>{
     handleSave = (text:string):void =>{
         const question = this.props.question;
         question.text = text;
-        const buildModel = new BuildModel(question);
+        const buildModel = new ModelBuilder(question);
         if(this.props.save){
             this.props.save(buildModel.toScheduler());
         }

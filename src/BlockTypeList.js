@@ -1,7 +1,7 @@
 //@flow
 import React from 'react'
 import {BlockType} from './BlockType'
-import {BlockIcon} from 'react-tb-icons'
+import {BlockIcon} from './BlockIcon'
 
 
 export const BlockTypeList = () =>{
