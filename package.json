@@ -1,6 +1,6 @@
 {
   "name": "react-tb-form",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "react form elements for tb",
   "author": "yingchangwu",
   "license": "MIT",
@@ -76,6 +76,7 @@
     "dist"
   ],
   "dependencies": {
+    "@types/superagent": "^3.8.4",
     "global": "^4.3.2",
     "moment": "^2.22.2",
     "react-dependent-script": "^1.1.0",
