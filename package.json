@@ -1,6 +1,6 @@
 {
   "name": "react-tb-form",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "react form elements for tb",
   "author": "yingchangwu",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "lib": "babel src/ -d lib/"
+    "build:lib": "babel src --out-dir lib --ignore *.test.js"
   },
   "peerDependencies": {
     "moment": "^2.22.2",
@@ -74,7 +74,10 @@
     "rollup-plugin-url": "^1.4.0"
   },
   "files": [
-    "dist"
+    "dist",
+    "lib",
+    "README.md",
+    "*.js.flow"
   ],
   "dependencies": {
     "@types/superagent": "^3.8.4",
