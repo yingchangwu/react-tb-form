@@ -1,12 +1,27 @@
-export {default as MultipleChoiceEditor} from './MultipleChoiceEditor'
-export {default as NewDefaultEditor} from './NewDefaultEditor'
-export {default as ShortTextEditor} from './ShortTextEditor'
-export {default as LongTextEditor } from './LongTextEditor'
-export {default as YesNoEditor} from './YesNoEditor'
-export {default as RatingEditor} from './RatingEditor'
-export {default as DropdownListEditor} from './DropdownListEditor'
-export {default as DateTimePickerEditor} from './DateTimePickerEditor'
-export {default as FileUploadEditor} from './FileUploadEditor'
-export {default as StatementEditor} from './StatementEditor'
-export {default as SchedulerEditor} from './SchedulerEditor'
-export {default as AddressLookupEditor} from './AddressLookupEditor'
+import {default as MultipleChoiceEditor} from './MultipleChoiceEditor'
+import {default as NewDefaultEditor} from './NewDefaultEditor'
+import {default as ShortTextEditor} from './ShortTextEditor'
+import {default as LongTextEditor } from './LongTextEditor'
+import {default as YesNoEditor} from './YesNoEditor'
+import {default as RatingEditor} from './RatingEditor'
+import {default as DropdownListEditor} from './DropdownListEditor'
+import {default as DateTimePickerEditor} from './DateTimePickerEditor'
+import {default as FileUploadEditor} from './FileUploadEditor'
+import {default as StatementEditor} from './StatementEditor'
+import {default as SchedulerEditor} from './SchedulerEditor'
+import {default as AddressLookupEditor} from './AddressLookupEditor'
+
+export const editor = {
+    MultipleChoiceEditor,
+    NewDefaultEditor,
+    ShortTextEditor,
+    LongTextEditor,
+    YesNoEditor,
+    RatingEditor,
+    DropdownListEditor,
+    DateTimePickerEditor,
+    FileUploadEditor,
+    StatementEditor,
+    SchedulerEditor,
+    AddressLookupEditor
+}

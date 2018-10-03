@@ -9,7 +9,7 @@ import multiEntry from 'rollup-plugin-multi-entry'
 import pkg from './package.json'
 
 export default {
-  input: ['src/index.js','src/Viewer/index.js'],
+  input: ['src/index.js','src/Models/index.js','src/Editor/index.js','src/Viewer/index.js'],
   output: [
     {
       file: pkg.main,

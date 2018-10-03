@@ -1,10 +1,10 @@
 //@flow
 import React, {Component} from 'react'
-import { ChoiceOptionItemField } from './Fields/ChoiceOptionItemField'
+import ChoiceOptionItemField from './Fields/ChoiceOptionItemField'
 import { DropdownListEditModel } from '../Models/DropdownListEditModel'
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {BlockIcon} from '../BlockIcon'
-import { ContentEditor } from './Fields/ContentEditor'
+import ContentEditor from './Fields/ContentEditor'
 import { ChoiceOptionItem } from '../Models/ChoiceOptionItem';
 type Props = {
     question: DropdownListEditModel,

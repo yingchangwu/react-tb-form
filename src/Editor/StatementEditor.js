@@ -4,7 +4,7 @@ import { StatementEditModel } from '../Models/StatementEditModel'
 
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {BlockIcon} from '../BlockIcon'
-import { ContentEditor } from './Fields/ContentEditor';
+import ContentEditor from './Fields/ContentEditor';
 
 type Props = {
     question: StatementEditModel,

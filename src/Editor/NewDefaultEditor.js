@@ -6,7 +6,7 @@ import {ShortTextEditModel} from '../Models/ShortTextEditModel'
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {BlockIcon} from '../BlockIcon'
 import {BlockType,BlockTypeName} from '../BlockType'
-import { ContentEditor } from './Fields/ContentEditor'
+import ContentEditor from './Fields/ContentEditor'
 type Props = {
     save: (question:ShortTextEditModel)=>void,
     //focus:(question:ShortTextEditModel)=>void,

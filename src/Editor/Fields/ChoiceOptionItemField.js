@@ -15,7 +15,7 @@ type Props = {
 type States = {
     currentInput: string
 }
-export class ChoiceOptionItemField extends React.Component<Props,States>{
+export default class ChoiceOptionItemField extends React.Component<Props,States>{
     constructor(props:Props){
         super(props);
         this.state = {

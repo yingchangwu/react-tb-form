@@ -4,7 +4,7 @@ import { LongTextEditModel } from '../Models/LongTextEditModel'
 
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {BlockIcon} from '../BlockIcon'
-import { ContentEditor } from './Fields/ContentEditor'
+import ContentEditor from './Fields/ContentEditor'
 type Props = {
     question: LongTextEditModel,
     save: (LongTextEditModel)=>void,

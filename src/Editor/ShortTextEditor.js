@@ -5,7 +5,7 @@ import { ShortTextEditModel } from '../Models/ShortTextEditModel'
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {BlockIcon} from '../BlockIcon'
 import {BlockType} from '../BlockType'
-import { ContentEditor } from './Fields/ContentEditor'
+import ContentEditor from './Fields/ContentEditor'
 
 type Props = {
     question: ShortTextEditModel,

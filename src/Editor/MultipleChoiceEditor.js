@@ -1,12 +1,12 @@
 //@flow
 import React, {Component} from 'react'
-import { ChoiceOptionItemField } from './Fields/ChoiceOptionItemField'
+import ChoiceOptionItemField from './Fields/ChoiceOptionItemField'
 
 import { ChoiceOptionItem } from '../Models/ChoiceOptionItem';
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {BlockIcon} from '../BlockIcon'
 import { MultipleChoiceEditModel } from '../Models/MultipleChoiceEditModel'
-import { ContentEditor } from './Fields/ContentEditor'
+import ContentEditor from './Fields/ContentEditor'
 type Props = {
     question: MultipleChoiceEditModel,
     save: (MultipleChoiceEditModel)=>void,

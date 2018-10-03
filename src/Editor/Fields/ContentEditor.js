@@ -14,7 +14,7 @@ type State = {
     editing:boolean
 }
 
-export class ContentEditor extends React.Component<Props,State>{
+export default class ContentEditor extends React.Component<Props,State>{
     state = {
         editing: false
     }

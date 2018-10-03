@@ -3,8 +3,7 @@ import React from 'react'
 import {BlockType} from './BlockType'
 import {BlockIcon} from './BlockIcon'
 
-
-export const BlockTypeList = () =>{
+export const blockTypeList = () =>{
     let options = [];
     const keys = BlockType.keys();
     keys.forEach(function(blockKey){

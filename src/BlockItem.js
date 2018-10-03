@@ -1,19 +1,17 @@
 //@flow
 import React from 'react'
 import { BlockType,BlockTypeName } from './BlockType'
-import {
-    ShortTextEditor,
-    MultipleChoiceEditor,
-    LongTextEditor,
-    YesNoEditor ,
-    RatingEditor,
-    DropdownListEditor,
-    DateTimePickerEditor,
-    FileUploadEditor,
-    StatementEditor,
-    SchedulerEditor,
-    AddressLookupEditor} from './Editor'
-
+import {default as ShortTextEditor} from './Editor/ShortTextEditor'
+import {default as MultipleChoiceEditor} from './Editor/MultipleChoiceEditor'
+import {default as LongTextEditor} from './Editor/LongTextEditor'
+import {default as YesNoEditor} from './Editor/YesNoEditor'
+import {default as RatingEditor} from './Editor/RatingEditor'
+import {default as DropdownListEditor} from './Editor/DropdownListEditor'
+import {default as DateTimePickerEditor} from './Editor/DateTimePickerEditor'
+import {default as FileUploadEditor} from './Editor/FileUploadEditor'
+import {default as StatementEditor} from './Editor/StatementEditor'
+import {default as SchedulerEditor} from './Editor/SchedulerEditor'
+import {default as AddressLookupEditor} from './Editor/AddressLookupEditor'
 import {ShortTextEditModel} from './Models/ShortTextEditModel'
 import {LongTextEditModel} from './Models/LongTextEditModel'
 import {MultipleChoiceEditModel} from './Models/MultipleChoiceEditModel'
@@ -27,77 +25,58 @@ import {StatementEditModel} from './Models/StatementEditModel'
 import {AddressLookupEditModel} from './Models/AddressLookupEditModel'
 import {ChoiceOptionItem} from './Models/ChoiceOptionItem'
 
+    let  AllEditModel:ShortTextEditModel | LongTextEditModel | MultipleChoiceEditModel | YesNoEditModel | RatingEditModel | DropdownListEditModel | DateTimePickerEditModel | FileUploadEditModel | StatementEditModel | SchedulerEditModel | AddressLookupEditModel | ShortTextEditModel;
+
     type blockItemProps = {
-        question:  ShortTextEditModel | LongTextEditModel | MultipleChoiceEditModel | YesNoEditModel | RatingEditModel | DropdownListEditModel | DateTimePickerEditModel | FileUploadEditModel | StatementEditModel | SchedulerEditModel | AddressLookupEditModel | ShortTextEditModel, 
+        question:  typeof AllEditModel, 
         isActive:boolean,
-        save: (question: ShortTextEditModel | LongTextEditModel | MultipleChoiceEditModel | YesNoEditModel | RatingEditModel | DropdownListEditModel | DateTimePickerEditModel | FileUploadEditModel | StatementEditModel | SchedulerEditModel | AddressLookupEditModel | ShortTextEditModel)=>void,
-        focus: (question: ShortTextEditModel | LongTextEditModel | MultipleChoiceEditModel | YesNoEditModel | RatingEditModel | DropdownListEditModel | DateTimePickerEditModel | FileUploadEditModel | StatementEditModel | SchedulerEditModel | AddressLookupEditModel | ShortTextEditModel)=>void,
+        save: (question: typeof AllEditModel)=>void,
+        focus: (question: typeof AllEditModel)=>void,
         addUpdateChoice: (id:string, options:ChoiceOptionItem) => void
     }
 export const BlockItem = ({question,isActive,save,focus,addUpdateChoice}: blockItemProps) =>{
         let result = <div>INCORRECT QUESTION TYPE</div>;
-        switch(question.type){
-            case BlockType[BlockTypeName.ShortText]:
-                result = <ShortTextEditor question={question} 
+        if(question instanceof ShortTextEditModel){
+            return <ShortTextEditor question={question} 
+            save={save}
+            focus={focus} />
+        }
+        else if(question instanceof LongTextEditModel){
+            return <LongTextEditor question={question} save={save} focus={focus} />
+        }
+        else if(question instanceof MultipleChoiceEditModel){
+            return <MultipleChoiceEditor question={question} 
+                                        isActive={isActive}
                                         save={save}
-                                        focus={focus} />
-            break;
-            case BlockType[BlockTypeName.LongText]:
-                result = <LongTextEditor question={question} 
-                                        save={save}
-                                        focus={focus} />
-                break;
-            case BlockType[BlockTypeName.YesNo]:
-                result = <YesNoEditor question={question} 
+                                        focus={focus}
+                                        addUpdateChoice={addUpdateChoice}/>
+        }
+        else if(question instanceof YesNoEditModel){
+            return <YesNoEditor question={question} save={save} focus={focus} />
+        }
+        else if(question instanceof RatingEditModel){
+            return <RatingEditor question={question} save={save} focus={focus} />
+        }
+        else if(question instanceof DropdownListEditModel){
+            return <DropdownListEditor question={question} 
+                                        isActive={isActive}
                                         save={save}
                                         focus={focus}
                                         addUpdateChoice={addUpdateChoice} />
-                break;
-            case BlockType[BlockTypeName.MultipleChoice]:
-            result = <MultipleChoiceEditor question={question} 
-                                    isActive={isActive}
-                                    save={save}
-                                    focus={focus}
-                                    addUpdateChoice={addUpdateChoice} />
-            break;
-            case BlockType[BlockTypeName.Rating]:
-            result = <RatingEditor question={question} 
-                                    save={save}
-                                    focus={focus} />
-            break;
-            case BlockType[BlockTypeName.DropdownList]:
-            result = <DropdownListEditor question={question} 
-                                    isActive={isActive}
-                                    save={save}
-                                    focus={focus}
-                                    addUpdateChoice={addUpdateChoice} />
-            break;
-            case BlockType[BlockTypeName.DateTimePicker]:
-            result = <DateTimePickerEditor question={question} 
-                                    save={save}
-                                    focus={focus}/>
-            break;
-            case BlockType[BlockTypeName.FileUpload]:
-            result = <FileUploadEditor question={question} 
-                                    save={save}
-                                    focus={focus}/>
-            break;
-            case BlockType[BlockTypeName.Statement]:
-            result = <StatementEditor question={question} 
-                                    save={save}
-                                    focus={focus}/>
-            break;
-            case BlockType[BlockTypeName.Scheduler]:
-            result = <SchedulerEditor question={question} 
-                                    save={save}
-                                    focus={focus}/>
-            break;
-            case BlockType[BlockTypeName.AddressLookup]:
-            result = <AddressLookupEditor question={question} 
-                                    save={save}
-                                    focus={focus}/>
-            break;
         }
-        
-        return result;
+        else if(question instanceof DateTimePickerEditModel){
+            return <DateTimePickerEditor question={question} save={save} focus={focus} />
+        }
+        else if(question instanceof FileUploadEditModel){
+            return <FileUploadEditor question={question} save={save} focus={focus} />
+        }
+        else if(question instanceof SchedulerEditModel){
+            return <SchedulerEditor question={question} save={save} focus={focus} />
+        }
+        else if(question instanceof StatementEditModel){
+            return <StatementEditor question={question} save={save} focus={focus} />
+        }
+        else if(question instanceof AddressLookupEditModel){
+            return <AddressLookupEditor question={question} save={save} focus={focus} />
+        }
     }

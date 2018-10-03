@@ -4,7 +4,7 @@ import { FileUploadEditModel } from '../Models/FileUploadEditModel'
 
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {BlockIcon} from '../BlockIcon'
-import { ContentEditor } from './Fields/ContentEditor'
+import ContentEditor from './Fields/ContentEditor'
 type Props = {
     question: FileUploadEditModel,
     save: (FileUploadEditModel)=>void,

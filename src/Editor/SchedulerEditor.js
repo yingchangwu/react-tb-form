@@ -4,7 +4,7 @@ import { SchedulerEditModel } from '../Models/SchedulerEditModel'
 
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {BlockIcon} from '../BlockIcon'
-import { ContentEditor } from './Fields/ContentEditor'
+import ContentEditor from './Fields/ContentEditor'
 type Props = {
     question: SchedulerEditModel,
     save: (question:SchedulerEditModel)=>void,

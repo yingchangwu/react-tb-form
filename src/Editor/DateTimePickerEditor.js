@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {DateTimePickerEditModel} from '../Models/DateTimePickerEditModel'
 import {BlockIcon} from '../BlockIcon'
-import { ContentEditor } from './Fields/ContentEditor'
+import ContentEditor from './Fields/ContentEditor'
 type Props = {
     question: DateTimePickerEditModel,
     save: (question:DateTimePickerEditModel)=>void,

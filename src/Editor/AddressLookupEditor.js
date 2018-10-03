@@ -3,7 +3,7 @@ import * as React from 'react'
 import { ModelBuilder } from '../Models/ModelBuilder'
 import {AddressLookupEditModel} from '../Models/AddressLookupEditModel'
 import {BlockIcon} from '../BlockIcon'
-import { ContentEditor } from './Fields/ContentEditor'
+import ContentEditor from './Fields/ContentEditor'
 type Props = {
     question: AddressLookupEditModel,
     save: (question:AddressLookupEditModel) => void,
