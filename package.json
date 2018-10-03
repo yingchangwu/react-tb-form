@@ -1,6 +1,6 @@
 {
   "name": "react-tb-form",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "react form elements for tb",
   "author": "yingchangwu",
   "license": "MIT",
@@ -15,14 +15,14 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "build": "npm run build:lib && npm run build:flow && rollup -c",
-    "build:flow": "cp src/*.js.flow lib && cp src/Editor/*.js.flow lib/Editor && cp src/Models/*.js.flow lib/Models && cp src/Viewer/*.js.flow lib/Models",
-    "build:lib": "babel src --out-dir lib --ignore *.test.js",
-    "start": "rollup -c -w",
+    "build": "npm run clean && npm run build:lib && npm run build:flow && rollup -c",
+    "start": "npm run clean && npm run build:lib && npm run build:flow && rollup -c -w",
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "clean": "rimraf dist lib"
+    "clean": "rimraf dist lib",
+    "build:lib": "babel src/ -d lib --ignore *.test.js",
+    "build:flow": "flow-copy-source src lib"
   },
   "peerDependencies": {
     "moment": "^2.22.2",
@@ -59,6 +59,7 @@
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0",
     "flow-bin": "^0.81.0",
+    "flow-copy-source": "^2.0.2",
     "flow-typed": "^2.5.1",
     "gh-pages": "^1.2.0",
     "react": "^16.4.1",
@@ -78,8 +79,7 @@
   "files": [
     "dist",
     "lib",
-    "README.md",
-    "*.js.flow"
+    "README.md"
   ],
   "dependencies": {
     "@types/superagent": "^3.8.4",
